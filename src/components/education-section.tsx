@@ -24,7 +24,7 @@ export default function EducationSection() {
               <h3 className="font-sora text-base font-bold text-zinc-900 sm:text-lg">
                 Pillai HOC College of Engineering and Technology
               </h3>
-              <p className="mt-0.5 text-xs font-mono text-zinc-500">
+              <p className="mt-0.5 text-xs font-mono font-light text-zinc-400">
                 Affiliated with University of Mumbai
               </p>
             </div>
@@ -87,8 +87,8 @@ export default function EducationSection() {
                 <span>View Certificate</span>
                 <span className="text-xs transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5">↗</span>
               </a>
-              <span className="font-mono text-xs text-zinc-500">
-                Issued by <strong className="font-bold text-[#18181b] text-xs">Scrimba</strong> · Feb 2026
+              <span className="font-mono text-xs font-light text-zinc-400">
+                Issued by <strong className="font-medium text-zinc-700 text-xs">Scrimba</strong> · Feb 2026
               </span>
             </div>
           </div>
@@ -121,7 +121,7 @@ export default function EducationSection() {
               <span className="inline-flex items-center gap-2 rounded-xl border border-zinc-200/80 bg-white px-5 py-2.5 font-mono text-xs font-semibold text-zinc-800 shadow-2xs transition-colors duration-200 group-hover:border-zinc-300">
                 <span>100+ Problems Solved</span>
               </span>
-              <span className="font-mono text-[11px] text-zinc-500">
+              <span className="font-mono text-[11px] font-light text-zinc-400">
                 Data Structures & Algorithms
               </span>
             </div>
