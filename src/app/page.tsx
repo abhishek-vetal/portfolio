@@ -6,25 +6,23 @@ import { Footer } from "@/components/footer";
 
 const FEATURED_PROJECTS = [
   {
-    name: "Vaani AI Voice SaaS",
+    name: "Vaani",
     description:
-      "Enterprise AI voice generation and real-time voice cloning platform with multi-lingual synthesis, custom voice training pipelines, and instant preview playback.",
+      "Full-stack AI voice SaaS app with voice cloning, powered by a self-hosted open-source TTS model.",
     points: [
-      "Engineered real-time TTS audio streaming pipeline with low-latency playback.",
-      "Designed white-theme studio editor for script editing and voice parameter control.",
-      "Integrated secure API key management and credit-based usage billing.",
+      "Generate speech from any text using ready-made AI voices or a voice you've cloned yourself, uploaded or recorded in the browser.",
+      "Runs on a self-hosted open-source TTS model instead of a third-party API, with waveform playback to hear back what you've generated.",
+      "Usage-based billing based on how much you generate.",
     ],
     stack: [
-      "Next.js 15",
+      "Next.js",
       "TypeScript",
-      "Tailwind CSS",
-      "Python / FastAPI",
-      "PyTorch",
-      "Web Audio API",
-      "PostgreSQL",
+      "PostgreSQL / Prisma",
+      "Clerk",
+      "Self-hosted TTS",
     ],
-    live: "https://vaani-voice.vercel.app",
-    github: "https://github.com/abhishek-vetal/vaani-ai-voice",
+    live: null,
+    github: "https://github.com/abhishek-vetal/vaani",
     screenshots: [
       { src: "/vaani-cloning.png", label: "Voice Cloning" },
       { src: "/vaani-studio.png", label: "TTS Studio" },
@@ -32,25 +30,24 @@ const FEATURED_PROJECTS = [
     tag: "Full-Stack AI SaaS",
   },
   {
-    name: "Save — Financial Management Platform",
+    name: "Save",
     description:
-      "Personal finance tracking & budget analytics application with real-time expense classification, visual spending breakdowns, and dynamic monthly budget goals.",
+      "Personal finance tracking app with budget analytics and expense classification.",
     points: [
-      "Architected real-time transaction dashboard with responsive data charts.",
-      "Built instant category breakdown analytics and expense logging modal.",
-      "Implemented secure OAuth authentication and serverless REST API handlers.",
+      "Track monthly income and expenses with interactive chart breakdowns.",
+      "Categorize transactions automatically with smart rules.",
+      "Set custom savings goals and receive real-time budget notifications.",
     ],
     stack: [
       "Next.js",
-      "React.js",
+      "React",
       "TypeScript",
       "Tailwind CSS",
-      "Prisma ORM",
+      "Prisma",
       "PostgreSQL",
-      "Recharts",
     ],
-    live: "https://save-finance-platform.vercel.app",
-    github: "https://github.com/abhishek-vetal/save-finance-platform",
+    live: null,
+    github: "https://github.com/abhishek-vetal/save",
     screenshots: [
       { src: "/save-landing.png", label: "Landing" },
       { src: "/save-dashboard.png", label: "Dashboard" },
