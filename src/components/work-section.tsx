@@ -21,11 +21,11 @@ interface WorkPoint {
 }
 
 interface WorkSectionProps {
-  projects: Project[];
-  workPoints: WorkPoint[];
+  projects?: Project[];
+  workPoints?: WorkPoint[];
 }
 
-export default function WorkSection({ projects, workPoints }: WorkSectionProps) {
+export default function WorkSection({ projects = [], workPoints = [] }: WorkSectionProps) {
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
 
