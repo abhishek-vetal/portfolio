@@ -1,21 +1,11 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import React, { useState } from "react";
 import emailjs from "@emailjs/browser";
-import {
-  FaEnvelope,
-  FaGithub,
-  FaLinkedin,
-  FaCheckCircle,
-  FaExclamationCircle,
-  FaPaperPlane,
-  FaSpinner,
-} from "react-icons/fa";
+import { FaPaperPlane, FaSpinner, FaCheckCircle, FaExclamationCircle, FaGithub, FaLinkedin, FaMapMarkerAlt } from "react-icons/fa";
 
-export function ContactSection() {
-  const [isVisible, setIsVisible] = useState(false);
-  const sectionRef = useRef<HTMLElement>(null);
-
+export default function ContactSection() {
+  const [isVisible] = useState(true);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -23,26 +13,9 @@ export function ContactSection() {
     message: "",
   });
 
-  const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
-  const [statusMessage, setStatusMessage] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-        }
-      },
-      { threshold: 0.15 }
-    );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    return () => observer.disconnect();
-  }, []);
+  const [status, setStatus] = useState<"idle" | "success" | "error">("idle");
+  const [statusMessage, setStatusMessage] = useState("");
 
   const email = "abhishek.vetal.dev@gmail.com";
 
@@ -67,7 +40,7 @@ export function ContactSection() {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
-    setStatus("submitting");
+    setStatus("idle");
     setStatusMessage("");
 
     const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
@@ -132,6 +105,8 @@ export function ContactSection() {
           console.log("Auto-reply sent successfully to:", formData.email);
         } catch (autoReplyErr: unknown) {
           console.error("Auto-reply failed to send:", autoReplyErr);
+          const errObj = autoReplyErr as { text?: string; message?: string; status?: number };
+          console.warn(`Auto-reply EmailJS Error (${errObj?.status || 500}): ${errObj?.text || errObj?.message}`);
         }
       }
 
@@ -141,144 +116,167 @@ export function ContactSection() {
     } catch (error: unknown) {
       console.error("EmailJS send error:", error);
       const errObj = error as { text?: string; message?: string; status?: number };
+      const errDetail = errObj?.text || errObj?.message || "Failed to send message. Please verify your EmailJS details.";
       setStatus("error");
-      setStatusMessage(
-        `Failed to send message: ${errObj?.text || errObj?.message || "Unknown error"}. Please reach out directly to abhishek.vetal.dev@gmail.com.`
-      );
+      setStatusMessage(`EmailJS Error (${errObj?.status || '500'}): ${errDetail}`);
     } finally {
       setIsSubmitting(false);
     }
   };
 
   return (
-    <section
-      id="contact"
-      ref={sectionRef}
-      className="mx-auto w-full max-w-7xl px-4 py-24 sm:px-6"
-    >
-      {/* Section Header */}
-      <div
-        className={[
-          "flex flex-col gap-2 transition-all duration-700 ease-out",
-          isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4",
-        ].join(" ")}
-      >
-        <div className="flex items-center justify-between">
-          <h2 className="font-sora text-3xl font-bold tracking-tight text-[#222222] sm:text-4xl">
-            Get In Touch
+    <section id="contact" className="w-full">
+      <div className="mx-auto w-full max-w-7xl px-4 py-20 sm:px-6">
+        {/* Section Header */}
+        <div className="flex flex-wrap items-baseline gap-x-4 gap-y-2">
+          <h2 className="font-display text-3xl font-semibold tracking-tight text-foreground">
+            Contact
           </h2>
-          <span className="font-mono text-xs font-medium uppercase tracking-[0.25em] text-zinc-400">
-            [04 / CONNECT]
+          <span className="font-mono text-xs font-medium uppercase tracking-[0.25em] text-zinc-600">
+            get in touch
           </span>
         </div>
-        <p className="max-w-xl text-base text-zinc-600">
-          Interested in working together, discussing full-time opportunities, or talking about product design?
-        </p>
-      </div>
 
-      {/* Main Grid: Info + Form */}
-      <div className="mt-14 grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-16">
-        {/* Left Column: Direct Contact Info */}
-        <div
-          className={[
-            "flex flex-col justify-between gap-10 lg:col-span-5 transition-all duration-700 ease-out",
-            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4",
-          ].join(" ")}
-        >
-          <div className="flex flex-col gap-8">
+        {/* 2-Column Responsive Layout: Direct Info (Left) | Contact Form (Right) */}
+        <div className="mt-8 grid grid-cols-1 gap-10 lg:grid-cols-2 lg:gap-14">
+          {/* Left Column: Direct Info & Socials */}
+          <div className="flex flex-col justify-between">
             <div>
-              <span className="font-mono text-xs font-medium uppercase tracking-[0.25em] text-zinc-400">
-                DIRECT EMAIL
-              </span>
-              <div className="mt-2">
+              <h3 className="font-display text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
+                Let&apos;s talk.
+              </h3>
+
+              <div className="mt-6 flex flex-col gap-2.5">
                 <a
                   href={`mailto:${email}`}
-                  className="group inline-flex items-center gap-2 text-xl sm:text-2xl font-semibold text-zinc-900 transition-colors hover:text-zinc-600"
+                  className="group inline-flex items-center font-display text-2xl font-bold tracking-tight text-brand-600 transition-colors hover:text-brand-700 sm:text-3xl lg:text-4xl"
                 >
-                  <FaEnvelope className="h-5 w-5 text-zinc-400 group-hover:text-zinc-600 transition-colors" />
-                  <span className="underline decoration-1 decoration-zinc-300/90 underline-offset-6 transition-colors group-hover:decoration-zinc-900">
+                  <span className="underline underline-offset-6 decoration-1 decoration-zinc-300/90 transition-colors duration-200 group-hover:decoration-brand-600">
                     {email}
                   </span>
                 </a>
+
+                <div className="mt-1 flex items-center gap-2 font-display text-base font-medium tracking-normal text-zinc-500 sm:text-lg">
+                  <FaMapMarkerAlt className="h-4 w-4 shrink-0 text-zinc-400" />
+                  <span>Kharghar, Navi Mumbai</span>
+                </div>
               </div>
             </div>
 
-            <div>
+            {/* Socials Subheading & Links */}
+            <div className="mt-10 lg:mt-0">
               <span className="font-mono text-xs uppercase tracking-[0.25em] text-zinc-400">
-                SOCIAL PROFILES
+                socials
               </span>
-              <div className="mt-4 flex flex-col gap-3">
+              <div className="mt-3 flex flex-wrap items-center gap-6">
                 <a
                   href="https://github.com/abhishek-vetal"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group inline-flex items-center gap-3 text-base font-medium text-zinc-700 transition-colors hover:text-zinc-950"
+                  className="group inline-flex items-center gap-2 font-display text-lg font-medium text-zinc-700 transition-colors hover:text-foreground"
                 >
-                  <FaGithub className="h-5 w-5 text-zinc-500 group-hover:text-zinc-950 transition-colors" />
-                  <span>GitHub</span>
+                  <FaGithub className="h-5 w-5 text-zinc-800 transition-transform duration-200 group-hover:scale-110" />
+                  <span className="underline underline-offset-4 decoration-zinc-300 group-hover:decoration-zinc-800">
+                    GitHub
+                  </span>
                   <span className="font-mono text-xs text-zinc-400 group-hover:text-zinc-600">↗</span>
                 </a>
+
                 <a
                   href="https://www.linkedin.com/in/abhishek-vetal/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group inline-flex items-center gap-3 text-base font-medium text-zinc-700 transition-colors hover:text-zinc-950"
+                  className="group inline-flex items-center gap-2 font-display text-lg font-medium text-zinc-700 transition-colors hover:text-foreground"
                 >
-                  <FaLinkedin className="h-5 w-5 text-[#0A66C2] transition-transform group-hover:scale-110" />
-                  <span>LinkedIn</span>
+                  <FaLinkedin className="h-5 w-5 text-[#0a66c2] transition-transform duration-200 group-hover:scale-110" />
+                  <span className="underline underline-offset-4 decoration-zinc-300 group-hover:decoration-[#0a66c2]">
+                    LinkedIn
+                  </span>
                   <span className="font-mono text-xs text-zinc-400 group-hover:text-zinc-600">↗</span>
                 </a>
               </div>
             </div>
           </div>
 
-          <div className="rounded-2xl border border-zinc-200/80 bg-zinc-50/80 p-6">
-            <p className="text-xs text-zinc-600 leading-relaxed font-mono">
-              ⚡ Open to Software Developer & Full-Stack roles. Typical response time: under 24 hours.
-            </p>
-          </div>
-        </div>
+          {/* Right Column: Contact Form */}
+          <div
+            style={{ transitionDelay: "300ms" }}
+            className={[
+              "transition-all duration-700 ease-out",
+              isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4 pointer-events-none",
+            ].join(" ")}
+          >
 
-        {/* Right Column: Contact Form */}
-        <div
-          style={{ transitionDelay: "300ms" }}
-          className={[
-            "lg:col-span-7 transition-all duration-700 ease-out",
-            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4",
-          ].join(" ")}
-        >
-          {/* Status Banners */}
-          {status === "success" && (
-            <div className="mt-4 flex items-start gap-3 rounded-xl border border-emerald-200 bg-emerald-50/80 p-3.5 text-sm text-emerald-800">
-              <FaCheckCircle className="mt-0.5 h-4 w-4 shrink-0 text-emerald-600" />
-              <p>{statusMessage}</p>
-            </div>
-          )}
+            {/* Status Banners */}
+            {status === "success" && (
+              <div className="mt-4 flex items-start gap-3 rounded-xl border border-emerald-200 bg-emerald-50/80 p-3.5 text-sm text-emerald-800">
+                <FaCheckCircle className="mt-0.5 h-4 w-4 shrink-0 text-emerald-600" />
+                <p>{statusMessage}</p>
+              </div>
+            )}
 
-          {status === "error" && (
-            <div className="mt-4 flex items-start gap-3 rounded-xl border border-red-200 bg-red-50/80 p-3.5 text-sm text-red-800">
-              <FaExclamationCircle className="mt-0.5 h-4 w-4 shrink-0 text-red-600" />
-              <p>{statusMessage}</p>
-            </div>
-          )}
+            {status === "error" && (
+              <div className="mt-4 flex items-start gap-3 rounded-xl border border-red-200 bg-red-50/80 p-3.5 text-sm text-red-800">
+                <FaExclamationCircle className="mt-0.5 h-4 w-4 shrink-0 text-red-600" />
+                <p>{statusMessage}</p>
+              </div>
+            )}
 
-          <form onSubmit={handleSubmit} className="mt-6 flex flex-col gap-6">
-            {/* Name & Email in 1 line */}
-            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
+            <form onSubmit={handleSubmit} className="mt-6 flex flex-col gap-6">
+              {/* Name & Email in 1 line */}
+              <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
+                <div>
+                  <label
+                    htmlFor="name"
+                    className="block text-sm font-normal text-zinc-600 sm:text-base"
+                  >
+                    Your Name <span className="text-red-500">*</span>
+                  </label>
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    required
+                    placeholder="John Doe"
+                    value={formData.name}
+                    onChange={handleChange}
+                    className="mt-1 w-full border-b border-zinc-300 bg-transparent py-2.5 text-sm text-zinc-900 placeholder:text-zinc-400 placeholder:font-normal focus:border-zinc-900 focus:outline-none transition-colors"
+                  />
+                </div>
+
+                <div>
+                  <label
+                    htmlFor="email"
+                    className="block text-sm font-normal text-zinc-600 sm:text-base"
+                  >
+                    Your Email <span className="text-red-500">*</span>
+                  </label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    required
+                    placeholder="john@example.com"
+                    value={formData.email}
+                    onChange={handleChange}
+                    className="mt-1 w-full border-b border-zinc-300 bg-transparent py-2.5 text-sm text-zinc-900 placeholder:text-zinc-400 placeholder:font-normal focus:border-zinc-900 focus:outline-none transition-colors"
+                  />
+                </div>
+              </div>
+
               <div>
                 <label
-                  htmlFor="name"
+                  htmlFor="subject"
                   className="block text-sm font-normal text-zinc-600 sm:text-base"
                 >
-                  Your Name <span className="text-red-500">*</span>
+                  Subject
                 </label>
                 <input
                   type="text"
-                  id="name"
-                  name="name"
-                  required
-                  placeholder="John Doe"
-                  value={formData.name}
+                  id="subject"
+                  name="subject"
+                  placeholder="What's this regarding?"
+                  value={formData.subject}
                   onChange={handleChange}
                   className="mt-1 w-full border-b border-zinc-300 bg-transparent py-2.5 text-sm text-zinc-900 placeholder:text-zinc-400 placeholder:font-normal focus:border-zinc-900 focus:outline-none transition-colors"
                 />
@@ -286,82 +284,45 @@ export function ContactSection() {
 
               <div>
                 <label
-                  htmlFor="email"
+                  htmlFor="message"
                   className="block text-sm font-normal text-zinc-600 sm:text-base"
                 >
-                  Your Email <span className="text-red-500">*</span>
+                  Message <span className="text-red-500">*</span>
                 </label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
+                <textarea
+                  id="message"
+                  name="message"
                   required
-                  placeholder="john@example.com"
-                  value={formData.email}
+                  rows={3}
+                  placeholder="Write your message here..."
+                  value={formData.message}
                   onChange={handleChange}
-                  className="mt-1 w-full border-b border-zinc-300 bg-transparent py-2.5 text-sm text-zinc-900 placeholder:text-zinc-400 placeholder:font-normal focus:border-zinc-900 focus:outline-none transition-colors"
+                  onKeyDown={handleKeyDown}
+                  className="mt-1 w-full border-b border-zinc-300 bg-transparent py-2.5 text-sm text-zinc-900 placeholder:text-zinc-400 placeholder:font-normal focus:border-zinc-900 focus:outline-none transition-colors resize-none"
                 />
               </div>
-            </div>
 
-            <div>
-              <label
-                htmlFor="subject"
-                className="block text-sm font-normal text-zinc-600 sm:text-base"
-              >
-                Subject
-              </label>
-              <input
-                type="text"
-                id="subject"
-                name="subject"
-                placeholder="What's this regarding?"
-                value={formData.subject}
-                onChange={handleChange}
-                className="mt-1 w-full border-b border-zinc-300 bg-transparent py-2.5 text-sm text-zinc-900 placeholder:text-zinc-400 placeholder:font-normal focus:border-zinc-900 focus:outline-none transition-colors"
-              />
-            </div>
-
-            <div>
-              <label
-                htmlFor="message"
-                className="block text-sm font-normal text-zinc-600 sm:text-base"
-              >
-                Message <span className="text-red-500">*</span>
-              </label>
-              <textarea
-                id="message"
-                name="message"
-                required
-                rows={3}
-                placeholder="Write your message here..."
-                value={formData.message}
-                onChange={handleChange}
-                onKeyDown={handleKeyDown}
-                className="mt-1 w-full border-b border-zinc-300 bg-transparent py-2.5 text-sm text-zinc-900 placeholder:text-zinc-400 placeholder:font-normal focus:border-zinc-900 focus:outline-none transition-colors resize-none"
-              />
-            </div>
-
-            <div className="mt-2">
-              <button
-                type="submit"
-                disabled={isSubmitting}
-                className="group inline-flex items-center justify-center gap-2.5 rounded-xl bg-zinc-900 px-7 py-3 font-inter text-sm font-semibold text-white shadow-sm transition-all duration-200 hover:bg-zinc-800 hover:-translate-y-0.5 active:translate-y-0 disabled:cursor-not-allowed disabled:opacity-60"
-              >
-                {isSubmitting ? (
-                  <>
-                    <FaSpinner className="h-4 w-4 animate-spin" />
-                    <span>Sending...</span>
-                  </>
-                ) : (
-                  <>
-                    <span>Send Message</span>
-                    <FaPaperPlane className="h-3.5 w-3.5 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                  </>
-                )}
-              </button>
-            </div>
-          </form>
+              <div className="mt-2">
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="group inline-flex items-center justify-center gap-2.5 rounded-xl bg-zinc-900 px-7 py-3 font-inter text-sm font-semibold text-white shadow-sm transition-all duration-200 hover:bg-zinc-800 hover:-translate-y-0.5 active:translate-y-0 disabled:cursor-not-allowed disabled:opacity-60"
+                >
+                  {isSubmitting ? (
+                    <>
+                      <FaSpinner className="h-4 w-4 animate-spin" />
+                      <span>Sending...</span>
+                    </>
+                  ) : (
+                    <>
+                      <FaPaperPlane className="h-3.5 w-3.5 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                      <span>Send Message</span>
+                    </>
+                  )}
+                </button>
+              </div>
+            </form>
+          </div>
         </div>
       </div>
     </section>

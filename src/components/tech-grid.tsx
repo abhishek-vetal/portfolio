@@ -1,130 +1,143 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
-import {
-  FaReact,
-  FaNodeJs,
-  FaDocker,
-  FaGitAlt,
-  FaPython,
-  FaFilePdf,
-} from "react-icons/fa";
+import React from "react";
+import { FaNodeJs, FaGitAlt, FaJava } from "react-icons/fa";
+import { FaFilePdf } from "react-icons/fa6";
 import {
   SiNextdotjs,
-  SiTypescript,
   SiTailwindcss,
-  SiPostgresql,
-  SiMongodb,
-  SiPrisma,
+  SiReact,
+  SiTypescript,
+  SiJavascript,
+  SiCplusplus,
   SiExpress,
-  SiFastapi,
-  SiRedis,
-  SiGraphql,
-  SiVercel,
-  SiFigma,
+  SiPostgresql,
+  SiPrisma,
+  SiClerk,
 } from "react-icons/si";
 
 interface TechItem {
   name: string;
-  category: "Frontend" | "Backend" | "Database & Cloud" | "Tools & Infra";
+  category: string;
   icon: React.ReactNode;
 }
 
 const TECH_ITEMS: TechItem[] = [
-  {
-    name: "React.js",
-    category: "Frontend",
-    icon: <FaReact className="h-6 w-6 text-[#61DAFB] transition-transform duration-300 group-hover:scale-110" />,
-  },
+  // Row 1 — Core frontend stack
   {
     name: "Next.js",
-    category: "Frontend",
-    icon: <SiNextdotjs className="h-6 w-6 text-zinc-900 transition-transform duration-300 group-hover:scale-110" />,
+    category: "Framework",
+    icon: <SiNextdotjs size={38} />,
+  },
+  {
+    name: "React",
+    category: "UI Library",
+    icon: <SiReact size={38} />,
   },
   {
     name: "TypeScript",
-    category: "Frontend",
-    icon: <SiTypescript className="h-6 w-6 text-[#3178C6] transition-transform duration-300 group-hover:scale-110" />,
+    category: "Language",
+    icon: <SiTypescript size={36} />,
   },
   {
     name: "Tailwind CSS",
-    category: "Frontend",
-    icon: <SiTailwindcss className="h-6 w-6 text-[#06B6D4] transition-transform duration-300 group-hover:scale-110" />,
+    category: "Styling",
+    icon: <SiTailwindcss size={38} />,
+  },
+
+  // Row 2 — UI + backend
+  {
+    name: "Shadcn UI",
+    category: "Components",
+    icon: (
+      <svg width="34" height="34" viewBox="0 0 256 256" fill="none" stroke="currentColor" strokeWidth="20" strokeLinecap="round" strokeLinejoin="round">
+        <line x1="208" y1="128" x2="128" y2="208" />
+        <line x1="192" y1="40" x2="40" y2="192" />
+      </svg>
+    ),
   },
   {
     name: "Node.js",
-    category: "Backend",
-    icon: <FaNodeJs className="h-6 w-6 text-[#5FA04E] transition-transform duration-300 group-hover:scale-110" />,
+    category: "Runtime",
+    icon: <FaNodeJs size={40} />,
   },
   {
-    name: "Express.js",
+    name: "Express",
     category: "Backend",
-    icon: <SiExpress className="h-6 w-6 text-zinc-800 transition-transform duration-300 group-hover:scale-110" />,
-  },
-  {
-    name: "Python",
-    category: "Backend",
-    icon: <FaPython className="h-6 w-6 text-[#3776AB] transition-transform duration-300 group-hover:scale-110" />,
-  },
-  {
-    name: "FastAPI",
-    category: "Backend",
-    icon: <SiFastapi className="h-6 w-6 text-[#009688] transition-transform duration-300 group-hover:scale-110" />,
+    icon: <SiExpress size={38} />,
   },
   {
     name: "PostgreSQL",
-    category: "Database & Cloud",
-    icon: <SiPostgresql className="h-6 w-6 text-[#4169E1] transition-transform duration-300 group-hover:scale-110" />,
+    category: "Database",
+    icon: <SiPostgresql size={38} />,
+  },
+
+  // Row 3 — Data, auth, AI
+  {
+    name: "Prisma",
+    category: "ORM",
+    icon: <SiPrisma size={38} />,
   },
   {
-    name: "MongoDB",
-    category: "Database & Cloud",
-    icon: <SiMongodb className="h-6 w-6 text-[#47A248] transition-transform duration-300 group-hover:scale-110" />,
+    name: "Clerk",
+    category: "Auth",
+    icon: <SiClerk size={38} />,
   },
   {
-    name: "Prisma ORM",
-    category: "Database & Cloud",
-    icon: <SiPrisma className="h-6 w-6 text-[#2D3748] transition-transform duration-300 group-hover:scale-110" />,
+    name: "Gemini API",
+    category: "AI & ML",
+    icon: (
+      <svg width="36" height="36" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M12 24C12 17.3726 6.62742 12 0 12C6.62742 12 12 6.62742 12 0C12 6.62742 17.3726 12 24 12C17.3726 12 12 17.3726 12 24Z" />
+      </svg>
+    ),
   },
   {
-    name: "Redis",
-    category: "Database & Cloud",
-    icon: <SiRedis className="h-6 w-6 text-[#DC382D] transition-transform duration-300 group-hover:scale-110" />,
+    name: "Inngest",
+    category: "Workflows",
+    icon: (
+      <svg width="36" height="36" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
+      </svg>
+    ),
+  },
+
+  // Row 4 — Languages + tooling
+  {
+    name: "JavaScript",
+    category: "Language",
+    icon: <SiJavascript size={36} />,
   },
   {
-    name: "GraphQL",
-    category: "Tools & Infra",
-    icon: <SiGraphql className="h-6 w-6 text-[#E10098] transition-transform duration-300 group-hover:scale-110" />,
+    name: "Java",
+    category: "Language",
+    icon: <FaJava size={40} />,
   },
   {
-    name: "Docker",
-    category: "Tools & Infra",
-    icon: <FaDocker className="h-6 w-6 text-[#2496ED] transition-transform duration-300 group-hover:scale-110" />,
+    name: "C / C++",
+    category: "Language",
+    icon: <SiCplusplus size={38} />,
   },
   {
-    name: "Git & GitHub",
-    category: "Tools & Infra",
-    icon: <FaGitAlt className="h-6 w-6 text-[#F05032] transition-transform duration-300 group-hover:scale-110" />,
-  },
-  {
-    name: "Vercel",
-    category: "Tools & Infra",
-    icon: <SiVercel className="h-6 w-6 text-zinc-900 transition-transform duration-300 group-hover:scale-110" />,
+    name: "Git",
+    category: "Tooling",
+    icon: <FaGitAlt size={40} />,
   },
 ];
 
-export function TechGrid() {
-  const [isVisible, setIsVisible] = useState(false);
-  const sectionRef = useRef<HTMLElement>(null);
+export default function TechGrid() {
+  const [isVisible, setIsVisible] = React.useState(false);
+  const sectionRef = React.useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
+  React.useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
           setIsVisible(true);
+          observer.disconnect();
         }
       },
-      { threshold: 0.15 }
+      { threshold: 0.05, rootMargin: "0px 0px -20px 0px" }
     );
 
     if (sectionRef.current) {
@@ -135,27 +148,24 @@ export function TechGrid() {
   }, []);
 
   return (
-    <section
-      id="resume"
-      ref={sectionRef}
-      className="mx-auto w-full max-w-7xl px-4 py-24 sm:px-6"
-    >
-      {/* Section Header */}
-      <div
-        className={[
-          "flex flex-col gap-2 transition-all duration-700 ease-out",
-          isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4",
-        ].join(" ")}
-      >
-        <div className="flex flex-wrap items-center justify-between gap-4">
-          <div className="flex flex-col gap-1">
-            <h2 className="font-sora text-3xl font-bold tracking-tight text-[#222222] sm:text-4xl">
-              Technical Stack & Skills
+    <section id="resume" ref={sectionRef} className="w-full">
+      <div className="mx-auto w-full max-w-7xl px-4 py-24 sm:px-6">
+        {/* Consistent Eyebrow Header + Resume Button */}
+        <div
+          className={[
+            "flex flex-wrap items-center justify-between gap-x-4 gap-y-3 transition-all duration-700 ease-out",
+            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4",
+          ].join(" ")}
+        >
+          <div className="flex flex-wrap items-baseline gap-x-4 gap-y-2">
+            <h2 className="font-display text-3xl font-bold tracking-tight text-[#222222] sm:text-4xl">
+              Tech
             </h2>
-            <p className="mt-1 max-w-2xl text-base text-zinc-600">
-              Languages, frameworks, databases, and infrastructure tools I use to build scalable products.
-            </p>
+            <span className="font-mono text-xs font-medium uppercase tracking-[0.25em] text-zinc-600">
+              what i bring
+            </span>
           </div>
+
           <a
             href="/resume.pdf"
             target="_blank"
@@ -184,17 +194,15 @@ export function TechGrid() {
                       : "opacity-20 translate-y-6 scale-95 blur-xs border-transparent shadow-none pointer-events-none",
                   ].join(" ")}
                 >
-                  <div className="relative z-10 flex h-10 w-10 items-center justify-center rounded-xl bg-zinc-50 p-2 border border-zinc-100 transition-colors group-hover:bg-zinc-100/80">
+                  {/* Subtle Bottom Accent Line on Hover */}
+                  <div className="absolute bottom-0 left-1/2 h-[2px] w-0 -translate-x-1/2 bg-zinc-800 transition-all duration-300 ease-out group-hover:w-12 opacity-0 group-hover:opacity-100" />
+
+                  <div className="flex h-12 w-12 items-center justify-center text-zinc-700 transition-all duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] group-hover:scale-110 group-hover:-translate-y-0.5 group-hover:text-zinc-950">
                     {item.icon}
                   </div>
-                  <div className="relative z-10 flex flex-col items-center gap-0.5">
-                    <span className="font-sora text-sm font-semibold text-zinc-900 transition-colors group-hover:text-black">
-                      {item.name}
-                    </span>
-                    <span className="font-mono text-[10px] font-medium text-zinc-600">
-                      {item.category}
-                    </span>
-                  </div>
+                  <h3 className="text-sm font-semibold tracking-tight text-zinc-800 transition-colors duration-200 group-hover:text-zinc-950">
+                    {item.name}
+                  </h3>
                 </div>
               ))}
             </div>
