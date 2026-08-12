@@ -18,19 +18,24 @@ export default function EducationSection() {
         </div>
 
         {/* Full-Width Education Card */}
-        <div className="mt-8 rounded-2xl border border-zinc-200/80 bg-transparent p-6 transition-all duration-300 ease-out transform-gpu hover:-translate-y-0.5 hover:border-zinc-400/80 sm:p-7">
-          <div className="flex flex-wrap items-baseline justify-between gap-4">
-            <h3 className="font-heading font-semibold text-zinc-900 sm:text-lg">
-              Pillai HOC College of Engineering and Technology
-            </h3>
-            <span className="shrink-0 font-mono text-sm text-zinc-500">
+        <div className="mt-8 rounded-2xl border border-zinc-200/80 bg-white p-6 sm:p-7 shadow-[0_2px_12px_-4px_rgba(15,23,42,0.03)] transition-all duration-300 ease-out hover:border-zinc-300">
+          <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2">
+            <div>
+              <h3 className="font-sora text-base font-bold text-zinc-900 sm:text-lg">
+                Pillai HOC College of Engineering and Technology
+              </h3>
+              <p className="mt-0.5 text-xs font-mono text-zinc-500">
+                Affiliated with University of Mumbai
+              </p>
+            </div>
+            <span className="shrink-0 font-mono text-xs font-semibold text-zinc-500">
               2019 – 2023
             </span>
           </div>
-          <p className="mt-1 text-sm italic text-zinc-600 sm:text-base">
+          <p className="mt-3 text-sm text-zinc-700 sm:text-base">
             B.E in Computer Engineering{" "}
             <span className="not-italic text-zinc-400">|</span>{" "}
-            <strong className="font-semibold not-italic text-zinc-800">
+            <strong className="font-semibold not-italic text-zinc-900">
               CGPA: 8.75/10.0
             </strong>
           </p>
