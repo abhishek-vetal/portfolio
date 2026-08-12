@@ -27,7 +27,6 @@ const FEATURED_PROJECTS = [
       { src: "/vaani-cloning.png", label: "Voice Cloning" },
       { src: "/vaani-studio.png", label: "TTS Studio" },
     ],
-    tag: "Full-Stack AI SaaS",
   },
   {
     name: "Save",
@@ -53,7 +52,6 @@ const FEATURED_PROJECTS = [
       { src: "/save-dashboard.png", label: "Dashboard" },
       { src: "/save-overview.png", label: "Personal" },
     ],
-    tag: "Full-Stack Web App",
   },
 ];
 

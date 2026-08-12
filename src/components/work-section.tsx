@@ -162,13 +162,6 @@ export default function WorkSection({ projects = [], workPoints = DEFAULT_WORK_P
                 <div className="flex flex-col justify-between lg:col-span-5">
                   <div>
                     <div>
-                      {project.tag && (
-                        <div className="mb-3">
-                          <span className="inline-block rounded-full border border-zinc-200/90 bg-white px-3.5 py-1 font-mono text-[10px] font-semibold uppercase tracking-[0.2em] text-zinc-500 shadow-2xs">
-                            {project.tag}
-                          </span>
-                        </div>
-                      )}
                       <h3 className="font-sora text-3xl font-bold tracking-tight text-[#222222] sm:text-4xl">
                         {project.name}
                       </h3>
