@@ -28,7 +28,7 @@ export default function EducationSection() {
                 Affiliated with University of Mumbai
               </p>
             </div>
-            <span className="shrink-0 font-mono text-xs font-semibold text-zinc-500">
+            <span className="shrink-0 font-mono text-xs font-light text-zinc-400 tracking-wide">
               2019 – 2023
             </span>
           </div>
