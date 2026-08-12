@@ -45,7 +45,7 @@ const FEATURED_PROJECTS = [
       "Prisma",
       "PostgreSQL",
     ],
-    live: null,
+    live: "https://save-finance-platform.vercel.app",
     github: "https://github.com/abhishek-vetal/save",
     screenshots: [
       { src: "/save-landing.png", label: "Landing" },
