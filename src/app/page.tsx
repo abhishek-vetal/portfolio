@@ -49,8 +49,8 @@ const FEATURED_PROJECTS = [
     github: "https://github.com/abhishek-vetal/save",
     screenshots: [
       { src: "/save-landing.png", label: "Landing" },
-      { src: "/save-dashboard.png", label: "Dashboard" },
       { src: "/save-overview.png", label: "Personal" },
+      { src: "/save-dashboard.png", label: "Dashboard" },
     ],
   },
 ];
