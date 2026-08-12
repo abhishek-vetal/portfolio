@@ -25,7 +25,34 @@ interface WorkSectionProps {
   workPoints?: WorkPoint[];
 }
 
-export default function WorkSection({ projects = [], workPoints = [] }: WorkSectionProps) {
+const DEFAULT_WORK_POINTS: WorkPoint[] = [
+  {
+    emoji: "🌱",
+    text: (
+      <>
+        Currently building <strong className="font-semibold text-zinc-800">Vaani</strong>, a full-stack AI voice SaaS app with voice cloning and custom TTS.
+      </>
+    ),
+  },
+  {
+    emoji: "⚙️",
+    text: (
+      <>
+        Sharpening problem-solving skills through Data Structures &amp; Algorithms on <strong className="font-semibold text-zinc-800">LeetCode</strong>.
+      </>
+    ),
+  },
+  {
+    emoji: "🚀",
+    text: (
+      <>
+        Open for <strong className="font-semibold text-zinc-800">Full-Time Software Developer</strong> roles &amp; technical collaborations.
+      </>
+    ),
+  },
+];
+
+export default function WorkSection({ projects = [], workPoints = DEFAULT_WORK_POINTS }: WorkSectionProps) {
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
 
@@ -134,15 +161,17 @@ export default function WorkSection({ projects = [], workPoints = [] }: WorkSect
                 {/* Left Column (5 Cols): Editorial Content */}
                 <div className="flex flex-col justify-between lg:col-span-5">
                   <div>
-                    <div className="flex flex-wrap items-center gap-3">
-                      <h3 className="font-display text-3xl font-bold tracking-tight text-[#222222] sm:text-4xl">
+                    <div>
+                      {project.tag && (
+                        <div className="mb-3">
+                          <span className="inline-block rounded-full border border-zinc-200/90 bg-white px-3.5 py-1 font-mono text-[10px] font-semibold uppercase tracking-[0.2em] text-zinc-500 shadow-2xs">
+                            {project.tag}
+                          </span>
+                        </div>
+                      )}
+                      <h3 className="font-sora text-3xl font-bold tracking-tight text-[#222222] sm:text-4xl">
                         {project.name}
                       </h3>
-                      {project.tag && (
-                        <span className="rounded-full bg-white px-3 py-1 font-mono text-[10px] font-semibold uppercase tracking-wider text-zinc-600 border border-zinc-200/80 shadow-2xs">
-                          {project.tag}
-                        </span>
-                      )}
                     </div>
 
                     <p className="mt-4 text-base leading-relaxed text-zinc-600 sm:text-lg">

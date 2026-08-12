@@ -26,8 +26,8 @@ const FEATURED_PROJECTS = [
     live: "https://vaani-voice.vercel.app",
     github: "https://github.com/abhishek-vetal/vaani-ai-voice",
     screenshots: [
-      { src: "/vaani-studio.png", label: "TTS Studio" },
       { src: "/vaani-cloning.png", label: "Voice Cloning" },
+      { src: "/vaani-studio.png", label: "TTS Studio" },
     ],
     tag: "Full-Stack AI SaaS",
   },
@@ -57,6 +57,33 @@ const FEATURED_PROJECTS = [
       { src: "/save-overview.png", label: "Personal" },
     ],
     tag: "Full-Stack Web App",
+  },
+];
+
+const WORK_POINTS = [
+  {
+    emoji: "🌱",
+    text: (
+      <>
+        Currently building <strong className="font-semibold text-zinc-800">Vaani</strong>, a full-stack AI voice SaaS app with voice cloning and custom TTS.
+      </>
+    ),
+  },
+  {
+    emoji: "⚙️",
+    text: (
+      <>
+        Sharpening problem-solving skills through Data Structures &amp; Algorithms on <strong className="font-semibold text-zinc-800">LeetCode</strong>.
+      </>
+    ),
+  },
+  {
+    emoji: "🚀",
+    text: (
+      <>
+        Open for <strong className="font-semibold text-zinc-800">Full-Time Software Developer</strong> roles &amp; technical collaborations.
+      </>
+    ),
   },
 ];
 
@@ -113,7 +140,7 @@ export default function Home() {
       </section>
 
       {/* Work Section */}
-      <WorkSection projects={FEATURED_PROJECTS} />
+      <WorkSection projects={FEATURED_PROJECTS} workPoints={WORK_POINTS} />
 
       {/* Tech Grid Section */}
       <TechGrid />
