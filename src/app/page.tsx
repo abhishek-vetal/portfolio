@@ -47,7 +47,7 @@ const FEATURED_PROJECTS = [
       "Inngest",
     ],
     live: "https://save-finance-platform.vercel.app",
-    github: "https://github.com/abhishek-vetal/save",
+    github: "https://github.com/abhishek-vetal/save-finance-platform",
     screenshots: [
       { src: "/save-landing.png", label: "High Res Landing" },
       { src: "/save-dashboard.png", label: "Dashboard" },
