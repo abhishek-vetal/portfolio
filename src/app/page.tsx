@@ -49,9 +49,9 @@ const FEATURED_PROJECTS = [
     live: "https://save-finance-platform.vercel.app",
     github: "https://github.com/abhishek-vetal/save-finance-platform",
     screenshots: [
-      { src: "/save-landing.png", label: "High Res Landing" },
+      { src: "/save-landing.png", label: "Landing Page" },
       { src: "/save-dashboard.png", label: "Dashboard" },
-      { src: "/save-overview.png", label: "Account Overview" },
+      { src: "/save-overview.png", label: "Personal Overview" },
     ],
   },
 ];

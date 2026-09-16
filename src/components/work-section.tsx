@@ -238,7 +238,7 @@ export default function WorkSection({ projects = [], workPoints = DEFAULT_WORK_P
                 </div>
 
                 {/* Right Column (7 Cols): Browser Window */}
-                <div className="relative aspect-[16/9.5] min-h-[17rem] max-h-[22rem] w-full overflow-hidden rounded-2xl border border-zinc-200/80 bg-white shadow-[0_10px_28px_-8px_rgba(15,23,42,0.1)] lg:col-span-7">
+                <div className="relative aspect-[16/10.5] min-h-[18rem] max-h-[26rem] w-full overflow-hidden rounded-2xl border border-zinc-200/80 bg-white shadow-[0_10px_28px_-8px_rgba(15,23,42,0.1)] lg:col-span-7">
                   <ProjectMedia
                     name={project.name}
                     url={project.live ?? project.github ?? ""}
