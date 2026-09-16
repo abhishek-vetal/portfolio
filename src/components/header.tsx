@@ -30,7 +30,7 @@ export function Header() {
             if (currentActive !== id) {
               currentActive = id;
               setActive(id);
-              window.history.replaceState(null, "", id === "home" ? "/" : `/${id}`);
+              window.history.replaceState(null, "", id === "home" ? window.location.pathname : `/#${id}`);
             }
             break;
           }
@@ -53,7 +53,7 @@ export function Header() {
     if (target) {
       target.scrollIntoView({ behavior: "smooth" });
       setActive(id);
-      window.history.pushState(null, "", id === "home" ? "/" : `/${id}`);
+      window.history.pushState(null, "", id === "home" ? window.location.pathname : `/#${id}`);
     }
     setMenuOpen(false);
   };
