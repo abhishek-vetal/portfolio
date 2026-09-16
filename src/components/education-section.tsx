@@ -1,8 +1,5 @@
 "use client";
 
-import React from "react";
-import { SiLeetcode } from "react-icons/si";
-
 export default function EducationSection() {
   return (
     <section id="education" className="w-full">

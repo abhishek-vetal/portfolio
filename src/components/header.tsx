@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
 import { DecryptLogo } from "@/components/decrypt-logo";
 
 const NAV_LINKS = [
@@ -74,14 +75,14 @@ export function Header() {
     <header className="sticky top-0 z-50 w-full border-b border-zinc-200/80 bg-white/85 shadow-[0_4px_20px_-6px_rgba(15,23,42,0.06)] backdrop-blur-xl font-sans">
       <div className="mx-auto flex h-16 w-full max-w-7xl items-center justify-between gap-4 px-4 sm:px-6">
         {/* Logo */}
-        <a
+        <Link
           href="/"
           onClick={(e) => handleNavClick(e, "home")}
           aria-label="Home"
           className="transition-transform duration-200 hover:scale-105"
         >
           <DecryptLogo />
-        </a>
+        </Link>
 
         {/* Floating Pill Nav */}
         <nav
