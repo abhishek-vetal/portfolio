@@ -6,20 +6,23 @@ import { Footer } from "@/components/footer";
 
 const FEATURED_PROJECTS = [
   {
-    name: "Vaani AI Voice SaaS",
+    name: "VAANI AI Voice Cloning Platform",
     description:
-      "Full-stack AI voice SaaS app with voice cloning, powered by a self-hosted open-source TTS model.",
+      "Full-stack AI voice cloning and generation platform powered by self-hosted Chatterbox TTS, Cloudflare R2 storage, and usage-based Polar billing.",
     points: [
-      "Generate speech from any text using ready-made AI voices or a voice you've cloned yourself, uploaded or recorded in the browser.",
-      "Runs on a self-hosted open-source TTS model instead of a third-party API, with waveform playback to hear back what you've generated.",
-      "Usage-based billing based on how much you generate.",
+      "Built a full-stack AI voice platform to browse built-in voices, clone custom audio, and synthesize speech from text using a self-hosted Chatterbox TTS model.",
+      "Engineered audio storage in Cloudflare R2 with PostgreSQL/Prisma metadata, plus configurable TTS controls (temperature, top-p, top-k, repetition penalty).",
+      "Implemented organization-based auth & data isolation via Clerk and tRPC, integrated with Polar subscription billing and usage-based character metering.",
     ],
     stack: [
       "Next.js",
       "TypeScript",
-      "PostgreSQL / Prisma",
-      "Clerk",
-      "Self-hosted TTS",
+      "Prisma",
+      "PostgreSQL",
+      "tRPC",
+      "Cloudflare R2",
+      "Polar",
+      "Chatterbox TTS",
     ],
     live: null,
     github: "https://github.com/abhishek-vetal/vaani",
