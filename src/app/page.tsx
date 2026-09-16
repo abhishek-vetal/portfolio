@@ -6,7 +6,7 @@ import { Footer } from "@/components/footer";
 
 const FEATURED_PROJECTS = [
   {
-    name: "Vaani",
+    name: "Vaani AI Voice SaaS",
     description:
       "Full-stack AI voice SaaS app with voice cloning, powered by a self-hosted open-source TTS model.",
     points: [
@@ -29,7 +29,7 @@ const FEATURED_PROJECTS = [
     ],
   },
   {
-    name: "SAVE — AI Personal Finance Platform",
+    name: "SAVE AI Finance Platform",
     description:
       "Full-stack AI personal finance platform featuring Plaid bank syncing, Gemini AI receipt scanning, and automated monthly spending reports.",
     points: [
