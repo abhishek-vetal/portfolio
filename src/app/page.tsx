@@ -27,8 +27,9 @@ const FEATURED_PROJECTS = [
     live: "https://vaani-ai-voice.vercel.app",
     github: "https://github.com/abhishek-vetal/vaani",
     screenshots: [
-      { src: "/vaani-cloning.png", label: "Voice Cloning" },
-      { src: "/vaani-studio.png", label: "TTS Studio" },
+      { src: "/vaani-1.png", label: "Dashboard" },
+      { src: "/vaani-2.png", label: "Voice Library" },
+      { src: "/vaani-3.png", label: "TTS Studio" },
     ],
   },
   {
