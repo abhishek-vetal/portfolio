@@ -35,7 +35,7 @@ const FEATURED_PROJECTS = [
     points: [
       "Built a full-stack personal finance platform with manual and Plaid automated bank account syncing, budget management, and real-time transaction tracking.",
       "Engineered AI-powered receipt scanning & monthly financial insights via Gemini API, with 80% threshold budget alerts powered by Inngest and Resend.",
-      "Created interactive spending analytics with Recharts across flexible timeframes (7D, 1M, 6M) and custom database-backed rate limiting.",
+      "Created interactive spending analytics with Recharts across flexible timeframes (7D, 1M, 3M, 6M, All-Time) and custom database-backed rate limiting.",
     ],
     stack: [
       "Next.js",
