@@ -16,29 +16,17 @@ export default function ProjectMedia({
 }) {
   const [active, setActive] = useState(0);
   const [paused, setPaused] = useState(false);
-  const [isZoomed, setIsZoomed] = useState(false);
   const hasShots = shots.length > 0;
 
   // Autoplay — skipped entirely for users who prefer reduced motion.
   useEffect(() => {
-    if (shots.length < 2 || paused || isZoomed) return;
+    if (shots.length < 2 || paused) return;
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     const id = setInterval(() => {
       setActive((i) => (i + 1) % shots.length);
     }, 4000);
     return () => clearInterval(id);
-  }, [paused, shots.length, isZoomed]);
-
-  // Close modal on Escape key
-  useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "Escape") setIsZoomed(false);
-    };
-    if (isZoomed) {
-      window.addEventListener("keydown", handleKeyDown);
-    }
-    return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [isZoomed]);
+  }, [paused, shots.length]);
 
   return (
     <div
@@ -90,7 +78,7 @@ export default function ProjectMedia({
       {/* Main Screenshot Stage */}
       <div className="relative min-h-0 flex-1 overflow-hidden bg-zinc-100/40">
         {hasShots ? (
-          <div className="group/img relative h-full w-full overflow-hidden cursor-zoom-in" onClick={() => setIsZoomed(true)}>
+          <div className="relative h-full w-full overflow-hidden">
             {shots.map((shot, i) => (
               <Image
                 key={shot.src}
@@ -101,47 +89,13 @@ export default function ProjectMedia({
                 priority={i === 0}
                 sizes="100vw"
                 className={[
-                  "object-cover object-top w-full h-full transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] transform-gpu group-hover/img:scale-[1.04]",
+                  "object-cover object-top w-full h-full transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] transform-gpu",
                   i === active
                     ? "scale-100 opacity-100 translate-y-0"
                     : "scale-[0.99] opacity-0 translate-y-1 pointer-events-none",
                 ].join(" ")}
               />
             ))}
-
-            {/* Hover CTA Overlay */}
-            <div className="absolute inset-0 flex items-center justify-center gap-2.5 bg-black/20 opacity-0 backdrop-blur-[2px] transition-all duration-300 group-hover/img:opacity-100 z-10">
-              <button
-                type="button"
-                onClick={(e) => {
-                  e.stopPropagation();
-                  setIsZoomed(true);
-                }}
-                className="inline-flex items-center gap-1.5 rounded-full bg-white/95 px-3.5 py-1.5 font-sans text-xs font-semibold text-zinc-900 shadow-lg transition-all duration-200 hover:scale-105 hover:bg-white"
-              >
-                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                  <circle cx="11" cy="11" r="8" />
-                  <line x1="21" y1="21" x2="16.65" y2="16.65" />
-                  <line x1="11" y1="8" x2="11" y2="14" />
-                  <line x1="8" y1="11" x2="14" y2="11" />
-                </svg>
-                <span>Zoom View</span>
-              </button>
-
-              {url && (
-                <a
-                  href={url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={(e) => e.stopPropagation()}
-                  aria-label={`Open the ${name} live demo`}
-                  className="inline-flex items-center gap-1 rounded-full bg-zinc-900/95 px-3.5 py-1.5 font-sans text-xs font-semibold text-white shadow-lg transition-all duration-200 hover:scale-105 hover:bg-zinc-900"
-                >
-                  <span>Live Demo</span>
-                  <span className="text-xs">↗</span>
-                </a>
-              )}
-            </div>
           </div>
         ) : (
           /* High-Tech Terminal Showcase for projects without screenshots */
@@ -211,65 +165,6 @@ export default function ProjectMedia({
                 </button>
               );
             })}
-          </div>
-        </div>
-      )}
-
-      {/* High-Resolution Zoom Lightbox Modal */}
-      {isZoomed && hasShots && (
-        <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4 sm:p-8 backdrop-blur-md animate-in fade-in duration-200"
-          onClick={() => setIsZoomed(false)}
-        >
-          <div
-            className="relative flex max-h-[92vh] max-w-6xl w-full flex-col overflow-hidden rounded-2xl bg-zinc-950 border border-zinc-800 shadow-2xl"
-            onClick={(e) => e.stopPropagation()}
-          >
-            {/* Lightbox Header */}
-            <div className="flex items-center justify-between border-b border-zinc-800/80 bg-zinc-900/90 px-5 py-3">
-              <div className="flex items-center gap-3">
-                <span className="font-sans text-sm font-semibold text-white">
-                  {name} — {shots[active]?.label}
-                </span>
-                <span className="font-mono text-xs text-zinc-400">
-                  ({active + 1}/{shots.length})
-                </span>
-              </div>
-
-              <div className="flex items-center gap-2">
-                {url && (
-                  <a
-                    href={url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1 rounded-lg bg-zinc-800 px-3 py-1.5 font-sans text-xs font-semibold text-zinc-200 transition-colors hover:bg-zinc-700 hover:text-white"
-                  >
-                    <span>Open Live Demo</span>
-                    <span>↗</span>
-                  </a>
-                )}
-                <button
-                  type="button"
-                  onClick={() => setIsZoomed(false)}
-                  className="flex h-8 w-8 items-center justify-center rounded-lg bg-zinc-800 text-zinc-400 transition-colors hover:bg-zinc-700 hover:text-white"
-                  aria-label="Close zoom modal"
-                >
-                  ✕
-                </button>
-              </div>
-            </div>
-
-            {/* Lightbox Image Viewport */}
-            <div className="relative flex-1 overflow-auto max-h-[78vh] p-2 bg-zinc-950 flex items-center justify-center">
-              <Image
-                src={shots[active].src}
-                alt={`${name} — ${shots[active].label}`}
-                width={1920}
-                height={1080}
-                unoptimized
-                className="w-full h-auto object-contain rounded-lg max-h-[75vh]"
-              />
-            </div>
           </div>
         </div>
       )}
