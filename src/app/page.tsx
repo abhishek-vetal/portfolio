@@ -24,7 +24,7 @@ const FEATURED_PROJECTS = [
       "Polar",
       "Chatterbox TTS",
     ],
-    live: null,
+    live: "https://vaani-ai-voice.vercel.app",
     github: "https://github.com/abhishek-vetal/vaani",
     screenshots: [
       { src: "/vaani-cloning.png", label: "Voice Cloning" },
