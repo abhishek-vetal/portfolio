@@ -4,15 +4,28 @@ import { useEffect, useState } from "react";
 import { DecryptLogo } from "@/components/decrypt-logo";
 
 const NAV_LINKS = [
-  { href: "#home", label: "Home" },
-  { href: "#work", label: "Work" },
-  { href: "#resume", label: "Resume" },
-  { href: "#contact", label: "Contact" },
+  { href: "/", id: "home", label: "Home" },
+  { href: "/work", id: "work", label: "Work" },
+  { href: "/resume", id: "resume", label: "Resume" },
+  { href: "/contact", id: "contact", label: "Contact" },
 ];
 
 export function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [active, setActive] = useState("home");
+
+  useEffect(() => {
+    const path = window.location.pathname.replace(/^\//, "");
+    if (path && ["work", "resume", "contact"].includes(path)) {
+      const el = document.getElementById(path);
+      if (el) {
+        setTimeout(() => {
+          el.scrollIntoView({ behavior: "smooth" });
+          setActive(path);
+        }, 150);
+      }
+    }
+  }, []);
 
   useEffect(() => {
     let currentActive = "";
@@ -30,7 +43,7 @@ export function Header() {
             if (currentActive !== id) {
               currentActive = id;
               setActive(id);
-              window.history.replaceState(null, "", id === "home" ? window.location.pathname : `/#${id}`);
+              window.history.replaceState(null, "", id === "home" ? "/" : `/${id}`);
             }
             break;
           }
@@ -45,15 +58,14 @@ export function Header() {
 
   const handleNavClick = (
     e: React.MouseEvent<HTMLAnchorElement>,
-    href: string
+    targetId: string
   ) => {
     e.preventDefault();
-    const id = href.replace("#", "");
-    const target = document.getElementById(id);
+    const target = document.getElementById(targetId);
     if (target) {
       target.scrollIntoView({ behavior: "smooth" });
-      setActive(id);
-      window.history.pushState(null, "", id === "home" ? window.location.pathname : `/#${id}`);
+      setActive(targetId);
+      window.history.pushState(null, "", targetId === "home" ? "/" : `/${targetId}`);
     }
     setMenuOpen(false);
   };
@@ -63,8 +75,8 @@ export function Header() {
       <div className="mx-auto flex h-16 w-full max-w-7xl items-center justify-between gap-4 px-4 sm:px-6">
         {/* Logo */}
         <a
-          href="#home"
-          onClick={(e) => handleNavClick(e, "#home")}
+          href="/"
+          onClick={(e) => handleNavClick(e, "home")}
           aria-label="Home"
           className="transition-transform duration-200 hover:scale-105"
         >
@@ -76,13 +88,13 @@ export function Header() {
           className="hidden items-center gap-1.5 rounded-full border border-zinc-200/70 bg-zinc-100/70 p-1 backdrop-blur-sm sm:flex"
           aria-label="Primary"
         >
-          {NAV_LINKS.map(({ href, label }) => {
-            const isActive = active === href.slice(1);
+          {NAV_LINKS.map(({ href, id, label }) => {
+            const isActive = active === id;
             return (
               <a
-                key={href}
+                key={id}
                 href={href}
-                onClick={(e) => handleNavClick(e, href)}
+                onClick={(e) => handleNavClick(e, id)}
                 aria-current={isActive ? "true" : undefined}
                 className={`rounded-full px-4 py-1.5 font-inter text-xs font-semibold transition-all duration-200 ${
                   isActive
@@ -136,13 +148,13 @@ export function Header() {
       {menuOpen && (
         <div className="border-t border-zinc-200/80 bg-white/95 px-4 py-3 shadow-lg backdrop-blur-xl sm:hidden">
           <nav className="flex flex-col gap-1" aria-label="Mobile">
-            {NAV_LINKS.map(({ href, label }) => {
-              const isActive = active === href.slice(1);
+            {NAV_LINKS.map(({ href, id, label }) => {
+              const isActive = active === id;
               return (
                 <a
-                  key={href}
+                  key={id}
                   href={href}
-                  onClick={(e) => handleNavClick(e, href)}
+                  onClick={(e) => handleNavClick(e, id)}
                   aria-current={isActive ? "true" : undefined}
                   className={`rounded-xl px-3.5 py-2.5 font-sans text-sm transition-colors ${
                     isActive

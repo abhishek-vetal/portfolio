@@ -1,3 +1,5 @@
+"use client";
+
 import WorkSection from "@/components/work-section";
 import TechGrid from "@/components/tech-grid";
 import EducationSection from "@/components/education-section";
@@ -121,7 +123,12 @@ export default function Home() {
           {/* CTA Buttons — animation 5 */}
           <div className="hero-animate-5 mt-9 flex flex-wrap items-center justify-center gap-3.5">
             <a
-              href="#work"
+              href="/work"
+              onClick={(e) => {
+                e.preventDefault();
+                document.getElementById("work")?.scrollIntoView({ behavior: "smooth" });
+                window.history.pushState(null, "", "/work");
+              }}
               className="inline-flex items-center gap-2 rounded-xl bg-zinc-900 px-6 py-3 font-inter text-sm font-semibold text-white shadow-xs transition-all duration-200 hover:bg-zinc-800 hover:-translate-y-0.5 active:translate-y-0"
             >
               <span>Explore Work</span>
@@ -129,7 +136,12 @@ export default function Home() {
             </a>
 
             <a
-              href="#contact"
+              href="/contact"
+              onClick={(e) => {
+                e.preventDefault();
+                document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
+                window.history.pushState(null, "", "/contact");
+              }}
               className="inline-flex items-center gap-2 rounded-xl border border-zinc-300/80 bg-white px-6 py-3 font-inter text-sm font-semibold text-zinc-900 shadow-2xs transition-all duration-200 hover:border-zinc-400 hover:bg-zinc-50 hover:-translate-y-0.5 active:translate-y-0"
             >
               <span>Get in Touch</span>
