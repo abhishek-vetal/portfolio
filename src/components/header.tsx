@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { DecryptLogo } from "@/components/decrypt-logo";
 
 const NAV_LINKS = [
   { href: "/", id: "home", label: "Home" },
@@ -79,14 +78,14 @@ export function Header() {
           href="/"
           onClick={(e) => handleNavClick(e, "home")}
           aria-label="Home"
-          className="transition-transform duration-200 hover:scale-105"
+          className="font-sora text-base font-bold tracking-tight text-zinc-900 transition-colors hover:text-zinc-600 sm:text-lg"
         >
-          <DecryptLogo />
+          Abhishek
         </Link>
 
-        {/* Floating Pill Nav */}
+        {/* Normal Nav Links */}
         <nav
-          className="hidden items-center gap-1.5 rounded-full border border-zinc-200/70 bg-zinc-100/70 p-1 backdrop-blur-sm sm:flex"
+          className="hidden items-center gap-7 sm:flex"
           aria-label="Primary"
         >
           {NAV_LINKS.map(({ href, id, label }) => {
@@ -97,13 +96,19 @@ export function Header() {
                 href={href}
                 onClick={(e) => handleNavClick(e, id)}
                 aria-current={isActive ? "true" : undefined}
-                className={`rounded-full px-4 py-1.5 font-inter text-xs font-semibold transition-all duration-200 ${
+                className={`relative font-sans text-sm font-medium transition-colors duration-200 ${
                   isActive
-                    ? "bg-zinc-900 text-white shadow-sm"
-                    : "text-zinc-600 hover:text-zinc-900 hover:bg-white/70"
+                    ? "font-semibold text-zinc-900"
+                    : "text-zinc-600 hover:text-zinc-900"
                 }`}
               >
                 {label}
+                {isActive && (
+                  <span
+                    aria-hidden="true"
+                    className="absolute -bottom-1 left-0 right-0 h-0.5 rounded-full bg-zinc-900"
+                  />
+                )}
               </a>
             );
           })}
@@ -159,8 +164,8 @@ export function Header() {
                   aria-current={isActive ? "true" : undefined}
                   className={`rounded-xl px-3.5 py-2.5 font-sans text-sm transition-colors ${
                     isActive
-                      ? "bg-zinc-900 font-bold text-white"
-                      : "font-semibold text-zinc-600 hover:bg-zinc-100 hover:text-zinc-900"
+                      ? "bg-zinc-100 font-bold text-zinc-900"
+                      : "font-medium text-zinc-600 hover:bg-zinc-50 hover:text-zinc-900"
                   }`}
                 >
                   {label}
