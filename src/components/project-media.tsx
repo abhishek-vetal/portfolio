@@ -154,6 +154,34 @@ export default function ProjectMedia({
           </div>
         )}
       </div>
+
+      {/* Minimal Bottom Numbered Switcher (1, 2, 3) */}
+      {hasShots && (
+        <div className="flex items-center justify-center bg-zinc-50/80 py-2 shrink-0 border-t border-zinc-200/50">
+          <div className="flex items-center gap-1.5 rounded-full bg-zinc-200/60 p-1 backdrop-blur-xs">
+            {shots.map((shot, i) => {
+              const isActive = i === active;
+              return (
+                <button
+                  key={shot.src}
+                  type="button"
+                  onClick={() => setActive(i)}
+                  aria-pressed={isActive}
+                  aria-label={`Show screenshot ${i + 1}`}
+                  className={[
+                    "flex h-6 w-6 items-center justify-center rounded-full font-mono text-[11px] font-semibold transition-all duration-150 cursor-pointer",
+                    isActive
+                      ? "bg-zinc-900 text-white shadow-2xs"
+                      : "text-zinc-600 hover:text-zinc-900 hover:bg-white/80",
+                  ].join(" ")}
+                >
+                  {i + 1}
+                </button>
+              );
+            })}
+          </div>
+        </div>
+      )}
     </div>
   );
 }
