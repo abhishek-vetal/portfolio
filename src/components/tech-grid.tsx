@@ -36,7 +36,7 @@ const CATEGORIES: TechCategory[] = [
       {
         name: "Next.js",
         subtitle: "App Router & SSR",
-        icon: <SiNextdotjs size={20} />,
+        icon: <SiNextdotjs size={20} className="transition-colors group-hover:text-purple-600" />,
       },
       {
         name: "React",
@@ -57,7 +57,7 @@ const CATEGORIES: TechCategory[] = [
         name: "Shadcn UI",
         subtitle: "Accessible UI",
         icon: (
-          <svg width="19" height="19" viewBox="0 0 256 256" fill="none" stroke="currentColor" strokeWidth="20" strokeLinecap="round" strokeLinejoin="round">
+          <svg width="19" height="19" viewBox="0 0 256 256" fill="none" stroke="currentColor" strokeWidth="20" strokeLinecap="round" strokeLinejoin="round" className="transition-colors group-hover:text-purple-600">
             <line x1="208" y1="128" x2="128" y2="208" />
             <line x1="192" y1="40" x2="40" y2="192" />
           </svg>
@@ -77,7 +77,7 @@ const CATEGORIES: TechCategory[] = [
       {
         name: "Express",
         subtitle: "REST APIs",
-        icon: <SiExpress size={20} />,
+        icon: <SiExpress size={20} className="transition-colors group-hover:text-purple-600" />,
       },
       {
         name: "Clerk",
@@ -116,7 +116,7 @@ const CATEGORIES: TechCategory[] = [
       {
         name: "Prisma",
         subtitle: "Type-safe ORM",
-        icon: <SiPrisma size={20} className="transition-colors group-hover:text-[#2D3748]" />,
+        icon: <SiPrisma size={20} className="transition-colors group-hover:text-purple-600" />,
       },
     ],
   },
