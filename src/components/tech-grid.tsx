@@ -1,8 +1,16 @@
 "use client";
 
 import React from "react";
-import { FaNodeJs, FaGitAlt, FaJava } from "react-icons/fa";
-import { FaFilePdf } from "react-icons/fa6";
+import {
+  FaNodeJs,
+  FaGitAlt,
+  FaJava,
+  FaDatabase,
+  FaNetworkWired,
+  FaMicrochip,
+  FaProjectDiagram,
+} from "react-icons/fa";
+import { FaFilePdf, FaCss3Alt } from "react-icons/fa6";
 import {
   SiNextdotjs,
   SiTailwindcss,
@@ -14,7 +22,14 @@ import {
   SiPostgresql,
   SiPrisma,
   SiClerk,
+  SiHtml5,
+  SiTrpc,
+  SiSqlite,
+  SiGithub,
+  SiCloudflare,
+  SiVercel,
 } from "react-icons/si";
+import { TbSql, TbApi } from "react-icons/tb";
 
 interface TechItem {
   name: string;
@@ -35,7 +50,7 @@ interface TechCategory {
 const CATEGORIES: TechCategory[] = [
   {
     id: "frontend",
-    label: "Frontend & UI",
+    label: "Frontend",
     items: [
       {
         name: "Next.js",
@@ -47,7 +62,7 @@ const CATEGORIES: TechCategory[] = [
         accentBar: "bg-purple-600",
       },
       {
-        name: "React",
+        name: "React.js",
         subtitle: "UI Library",
         icon: <SiReact size={21} />,
         hoverBorder: "hover:border-sky-300/80",
@@ -56,17 +71,26 @@ const CATEGORIES: TechCategory[] = [
         accentBar: "bg-sky-500",
       },
       {
-        name: "TypeScript",
-        subtitle: "Typed JS",
-        icon: <SiTypescript size={20} />,
+        name: "HTML5",
+        subtitle: "Semantic Structure",
+        icon: <SiHtml5 size={21} />,
+        hoverBorder: "hover:border-orange-300/80",
+        hoverShadow: "hover:shadow-[0_12px_28px_-6px_rgba(227,79,38,0.14)]",
+        iconBoxHover: "group-hover:bg-orange-50 group-hover:border-orange-200/80 group-hover:text-[#E34F26]",
+        accentBar: "bg-[#E34F26]",
+      },
+      {
+        name: "CSS3",
+        subtitle: "Styling & Layout",
+        icon: <FaCss3Alt size={22} />,
         hoverBorder: "hover:border-blue-300/80",
-        hoverShadow: "hover:shadow-[0_12px_28px_-6px_rgba(49,120,198,0.14)]",
-        iconBoxHover: "group-hover:bg-blue-50 group-hover:border-blue-200/80 group-hover:text-[#3178C6]",
-        accentBar: "bg-[#3178C6]",
+        hoverShadow: "hover:shadow-[0_12px_28px_-6px_rgba(21,114,182,0.14)]",
+        iconBoxHover: "group-hover:bg-blue-50 group-hover:border-blue-200/80 group-hover:text-[#1572B6]",
+        accentBar: "bg-[#1572B6]",
       },
       {
         name: "Tailwind CSS",
-        subtitle: "Modern Styling",
+        subtitle: "Utility-First CSS",
         icon: <SiTailwindcss size={21} />,
         hoverBorder: "hover:border-cyan-300/80",
         hoverShadow: "hover:shadow-[0_12px_28px_-6px_rgba(6,182,212,0.14)]",
@@ -74,8 +98,8 @@ const CATEGORIES: TechCategory[] = [
         accentBar: "bg-[#06B6D4]",
       },
       {
-        name: "Shadcn UI",
-        subtitle: "Accessible UI",
+        name: "shadcn/ui",
+        subtitle: "Accessible UI Components",
         icon: (
           <svg width="20" height="20" viewBox="0 0 256 256" fill="none" stroke="currentColor" strokeWidth="20" strokeLinecap="round" strokeLinejoin="round">
             <line x1="208" y1="128" x2="128" y2="208" />
@@ -91,11 +115,11 @@ const CATEGORIES: TechCategory[] = [
   },
   {
     id: "backend",
-    label: "Backend & Services",
+    label: "Backend",
     items: [
       {
         name: "Node.js",
-        subtitle: "Runtime",
+        subtitle: "JavaScript Runtime",
         icon: <FaNodeJs size={21} />,
         hoverBorder: "hover:border-emerald-300/80",
         hoverShadow: "hover:shadow-[0_12px_28px_-6px_rgba(95,160,78,0.14)]",
@@ -103,8 +127,8 @@ const CATEGORIES: TechCategory[] = [
         accentBar: "bg-[#5FA04E]",
       },
       {
-        name: "Express",
-        subtitle: "REST APIs",
+        name: "Express.js",
+        subtitle: "Web Framework & APIs",
         icon: <SiExpress size={21} />,
         hoverBorder: "hover:border-purple-300/80",
         hoverShadow: "hover:shadow-[0_12px_28px_-6px_rgba(147,51,234,0.14)]",
@@ -112,39 +136,22 @@ const CATEGORIES: TechCategory[] = [
         accentBar: "bg-purple-600",
       },
       {
-        name: "Clerk",
-        subtitle: "Auth & Security",
-        icon: <SiClerk size={21} />,
-        hoverBorder: "hover:border-purple-300/80",
-        hoverShadow: "hover:shadow-[0_12px_28px_-6px_rgba(108,71,255,0.14)]",
-        iconBoxHover: "group-hover:bg-purple-50 group-hover:border-purple-200/80 group-hover:text-[#6C47FF]",
-        accentBar: "bg-[#6C47FF]",
-      },
-      {
-        name: "Inngest",
-        subtitle: "Workflows & Queues",
-        icon: (
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
-          </svg>
-        ),
-        hoverBorder: "hover:border-emerald-300/80",
-        hoverShadow: "hover:shadow-[0_12px_28px_-6px_rgba(16,185,129,0.14)]",
-        iconBoxHover: "group-hover:bg-emerald-50 group-hover:border-emerald-200/80 group-hover:text-[#10B981]",
-        accentBar: "bg-[#10B981]",
-      },
-      {
-        name: "Gemini API",
-        subtitle: "Multimodal AI",
-        icon: (
-          <svg width="21" height="21" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-            <path d="M12 24C12 17.3726 6.62742 12 0 12C6.62742 12 12 6.62742 12 0C12 6.62742 17.3726 12 24 12C17.3726 12 12 17.3726 12 24Z" />
-          </svg>
-        ),
+        name: "tRPC",
+        subtitle: "End-to-End Typesafe APIs",
+        icon: <SiTrpc size={21} />,
         hoverBorder: "hover:border-blue-300/80",
-        hoverShadow: "hover:shadow-[0_12px_28px_-6px_rgba(26,115,232,0.14)]",
-        iconBoxHover: "group-hover:bg-blue-50 group-hover:border-blue-200/80 group-hover:text-[#1A73E8]",
-        accentBar: "bg-[#1A73E8]",
+        hoverShadow: "hover:shadow-[0_12px_28px_-6px_rgba(57,140,203,0.14)]",
+        iconBoxHover: "group-hover:bg-blue-50 group-hover:border-blue-200/80 group-hover:text-[#398CCB]",
+        accentBar: "bg-[#398CCB]",
+      },
+      {
+        name: "REST APIs",
+        subtitle: "API Design & Architecture",
+        icon: <TbApi size={24} />,
+        hoverBorder: "hover:border-purple-300/80",
+        hoverShadow: "hover:shadow-[0_12px_28px_-6px_rgba(147,51,234,0.14)]",
+        iconBoxHover: "group-hover:bg-purple-50 group-hover:border-purple-200/80 group-hover:text-purple-600",
+        accentBar: "bg-purple-600",
       },
     ],
   },
@@ -162,8 +169,17 @@ const CATEGORIES: TechCategory[] = [
         accentBar: "bg-[#4169E1]",
       },
       {
-        name: "Prisma",
-        subtitle: "Type-safe ORM",
+        name: "SQLite",
+        subtitle: "Lightweight SQL Engine",
+        icon: <SiSqlite size={21} />,
+        hoverBorder: "hover:border-sky-300/80",
+        hoverShadow: "hover:shadow-[0_12px_28px_-6px_rgba(0,59,87,0.14)]",
+        iconBoxHover: "group-hover:bg-sky-50 group-hover:border-sky-200/80 group-hover:text-[#003B57]",
+        accentBar: "bg-[#003B57]",
+      },
+      {
+        name: "Prisma ORM",
+        subtitle: "Type-safe ORM & Migrations",
         icon: <SiPrisma size={21} />,
         hoverBorder: "hover:border-purple-300/80",
         hoverShadow: "hover:shadow-[0_12px_28px_-6px_rgba(147,51,234,0.14)]",
@@ -173,36 +189,9 @@ const CATEGORIES: TechCategory[] = [
     ],
   },
   {
-    id: "languages",
-    label: "Languages & Tools",
+    id: "tools",
+    label: "Tools & Services",
     items: [
-      {
-        name: "JavaScript",
-        subtitle: "Web Standards",
-        icon: <SiJavascript size={20} />,
-        hoverBorder: "hover:border-amber-300/80",
-        hoverShadow: "hover:shadow-[0_12px_28px_-6px_rgba(234,179,8,0.14)]",
-        iconBoxHover: "group-hover:bg-amber-50 group-hover:border-amber-200/80 group-hover:text-[#EAB308]",
-        accentBar: "bg-[#EAB308]",
-      },
-      {
-        name: "Java",
-        subtitle: "OOP & Systems",
-        icon: <FaJava size={22} />,
-        hoverBorder: "hover:border-orange-300/80",
-        hoverShadow: "hover:shadow-[0_12px_28px_-6px_rgba(237,139,0,0.14)]",
-        iconBoxHover: "group-hover:bg-orange-50 group-hover:border-orange-200/80 group-hover:text-[#ED8B00]",
-        accentBar: "bg-[#ED8B00]",
-      },
-      {
-        name: "C / C++",
-        subtitle: "Algorithms & DSA",
-        icon: <SiCplusplus size={21} />,
-        hoverBorder: "hover:border-blue-300/80",
-        hoverShadow: "hover:shadow-[0_12px_28px_-6px_rgba(0,89,156,0.14)]",
-        iconBoxHover: "group-hover:bg-blue-50 group-hover:border-blue-200/80 group-hover:text-[#00599C]",
-        accentBar: "bg-[#00599C]",
-      },
       {
         name: "Git",
         subtitle: "Version Control",
@@ -211,6 +200,161 @@ const CATEGORIES: TechCategory[] = [
         hoverShadow: "hover:shadow-[0_12px_28px_-6px_rgba(240,80,50,0.14)]",
         iconBoxHover: "group-hover:bg-orange-50 group-hover:border-orange-200/80 group-hover:text-[#F05032]",
         accentBar: "bg-[#F05032]",
+      },
+      {
+        name: "GitHub",
+        subtitle: "Collaboration & Actions",
+        icon: <SiGithub size={21} />,
+        hoverBorder: "hover:border-purple-300/80",
+        hoverShadow: "hover:shadow-[0_12px_28px_-6px_rgba(147,51,234,0.14)]",
+        iconBoxHover: "group-hover:bg-purple-50 group-hover:border-purple-200/80 group-hover:text-purple-600",
+        accentBar: "bg-purple-600",
+      },
+      {
+        name: "Clerk",
+        subtitle: "Auth & User Management",
+        icon: <SiClerk size={21} />,
+        hoverBorder: "hover:border-purple-300/80",
+        hoverShadow: "hover:shadow-[0_12px_28px_-6px_rgba(108,71,255,0.14)]",
+        iconBoxHover: "group-hover:bg-purple-50 group-hover:border-purple-200/80 group-hover:text-[#6C47FF]",
+        accentBar: "bg-[#6C47FF]",
+      },
+      {
+        name: "Cloudflare R2",
+        subtitle: "Fast Object Storage",
+        icon: <SiCloudflare size={21} />,
+        hoverBorder: "hover:border-orange-300/80",
+        hoverShadow: "hover:shadow-[0_12px_28px_-6px_rgba(243,128,32,0.14)]",
+        iconBoxHover: "group-hover:bg-orange-50 group-hover:border-orange-200/80 group-hover:text-[#F38020]",
+        accentBar: "bg-[#F38020]",
+      },
+      {
+        name: "Vercel",
+        subtitle: "Deployment & Edge",
+        icon: <SiVercel size={18} />,
+        hoverBorder: "hover:border-purple-300/80",
+        hoverShadow: "hover:shadow-[0_12px_28px_-6px_rgba(147,51,234,0.14)]",
+        iconBoxHover: "group-hover:bg-purple-50 group-hover:border-purple-200/80 group-hover:text-purple-600",
+        accentBar: "bg-purple-600",
+      },
+      {
+        name: "Inngest",
+        subtitle: "Event-Driven Queues",
+        icon: (
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
+          </svg>
+        ),
+        hoverBorder: "hover:border-emerald-300/80",
+        hoverShadow: "hover:shadow-[0_12px_28px_-6px_rgba(16,185,129,0.14)]",
+        iconBoxHover: "group-hover:bg-emerald-50 group-hover:border-emerald-200/80 group-hover:text-[#10B981]",
+        accentBar: "bg-[#10B981]",
+      },
+      {
+        name: "Gemini API",
+        subtitle: "Multimodal AI & LLM",
+        icon: (
+          <svg width="21" height="21" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M12 24C12 17.3726 6.62742 12 0 12C6.62742 12 12 6.62742 12 0C12 6.62742 17.3726 12 24 12C17.3726 12 12 17.3726 12 24Z" />
+          </svg>
+        ),
+        hoverBorder: "hover:border-blue-300/80",
+        hoverShadow: "hover:shadow-[0_12px_28px_-6px_rgba(26,115,232,0.14)]",
+        iconBoxHover: "group-hover:bg-blue-50 group-hover:border-blue-200/80 group-hover:text-[#1A73E8]",
+        accentBar: "bg-[#1A73E8]",
+      },
+    ],
+  },
+  {
+    id: "languages",
+    label: "Languages",
+    items: [
+      {
+        name: "TypeScript",
+        subtitle: "Type-Safe JavaScript",
+        icon: <SiTypescript size={20} />,
+        hoverBorder: "hover:border-blue-300/80",
+        hoverShadow: "hover:shadow-[0_12px_28px_-6px_rgba(49,120,198,0.14)]",
+        iconBoxHover: "group-hover:bg-blue-50 group-hover:border-blue-200/80 group-hover:text-[#3178C6]",
+        accentBar: "bg-[#3178C6]",
+      },
+      {
+        name: "JavaScript",
+        subtitle: "Modern ES6+ Standards",
+        icon: <SiJavascript size={20} />,
+        hoverBorder: "hover:border-amber-300/80",
+        hoverShadow: "hover:shadow-[0_12px_28px_-6px_rgba(234,179,8,0.14)]",
+        iconBoxHover: "group-hover:bg-amber-50 group-hover:border-amber-200/80 group-hover:text-[#EAB308]",
+        accentBar: "bg-[#EAB308]",
+      },
+      {
+        name: "SQL",
+        subtitle: "Relational Queries & DDL",
+        icon: <TbSql size={24} />,
+        hoverBorder: "hover:border-purple-300/80",
+        hoverShadow: "hover:shadow-[0_12px_28px_-6px_rgba(147,51,234,0.14)]",
+        iconBoxHover: "group-hover:bg-purple-50 group-hover:border-purple-200/80 group-hover:text-purple-600",
+        accentBar: "bg-purple-600",
+      },
+      {
+        name: "C / C++",
+        subtitle: "Algorithms & Low-Level",
+        icon: <SiCplusplus size={21} />,
+        hoverBorder: "hover:border-blue-300/80",
+        hoverShadow: "hover:shadow-[0_12px_28px_-6px_rgba(0,89,156,0.14)]",
+        iconBoxHover: "group-hover:bg-blue-50 group-hover:border-blue-200/80 group-hover:text-[#00599C]",
+        accentBar: "bg-[#00599C]",
+      },
+      {
+        name: "Java",
+        subtitle: "OOP & System Design",
+        icon: <FaJava size={22} />,
+        hoverBorder: "hover:border-orange-300/80",
+        hoverShadow: "hover:shadow-[0_12px_28px_-6px_rgba(237,139,0,0.14)]",
+        iconBoxHover: "group-hover:bg-orange-50 group-hover:border-orange-200/80 group-hover:text-[#ED8B00]",
+        accentBar: "bg-[#ED8B00]",
+      },
+    ],
+  },
+  {
+    id: "fundamentals",
+    label: "CS Fundamentals",
+    items: [
+      {
+        name: "Data Structures & Algorithms",
+        subtitle: "Trees, Graphs, DP & Sorting",
+        icon: <FaProjectDiagram size={20} />,
+        hoverBorder: "hover:border-purple-300/80",
+        hoverShadow: "hover:shadow-[0_12px_28px_-6px_rgba(147,51,234,0.14)]",
+        iconBoxHover: "group-hover:bg-purple-50 group-hover:border-purple-200/80 group-hover:text-purple-600",
+        accentBar: "bg-purple-600",
+      },
+      {
+        name: "DBMS",
+        subtitle: "ACID, Indexing & Normalization",
+        icon: <FaDatabase size={19} />,
+        hoverBorder: "hover:border-purple-300/80",
+        hoverShadow: "hover:shadow-[0_12px_28px_-6px_rgba(147,51,234,0.14)]",
+        iconBoxHover: "group-hover:bg-purple-50 group-hover:border-purple-200/80 group-hover:text-purple-600",
+        accentBar: "bg-purple-600",
+      },
+      {
+        name: "Operating Systems",
+        subtitle: "Processes, Threads & Memory",
+        icon: <FaMicrochip size={20} />,
+        hoverBorder: "hover:border-purple-300/80",
+        hoverShadow: "hover:shadow-[0_12px_28px_-6px_rgba(147,51,234,0.14)]",
+        iconBoxHover: "group-hover:bg-purple-50 group-hover:border-purple-200/80 group-hover:text-purple-600",
+        accentBar: "bg-purple-600",
+      },
+      {
+        name: "Computer Networks",
+        subtitle: "TCP/IP, HTTP/S & DNS",
+        icon: <FaNetworkWired size={19} />,
+        hoverBorder: "hover:border-purple-300/80",
+        hoverShadow: "hover:shadow-[0_12px_28px_-6px_rgba(147,51,234,0.14)]",
+        iconBoxHover: "group-hover:bg-purple-50 group-hover:border-purple-200/80 group-hover:text-purple-600",
+        accentBar: "bg-purple-600",
       },
     ],
   },
