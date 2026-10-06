@@ -20,6 +20,10 @@ interface TechItem {
   name: string;
   subtitle: string;
   icon: React.ReactNode;
+  hoverBorder: string;
+  hoverShadow: string;
+  iconBoxHover: string;
+  accentBar: string;
 }
 
 interface TechCategory {
@@ -36,32 +40,52 @@ const CATEGORIES: TechCategory[] = [
       {
         name: "Next.js",
         subtitle: "App Router & SSR",
-        icon: <SiNextdotjs size={20} className="transition-colors group-hover:text-purple-600" />,
+        icon: <SiNextdotjs size={21} />,
+        hoverBorder: "hover:border-purple-300/80",
+        hoverShadow: "hover:shadow-[0_12px_28px_-6px_rgba(147,51,234,0.14)]",
+        iconBoxHover: "group-hover:bg-purple-50 group-hover:border-purple-200/80 group-hover:text-purple-600",
+        accentBar: "bg-purple-600",
       },
       {
         name: "React",
         subtitle: "UI Library",
-        icon: <SiReact size={20} className="transition-colors group-hover:text-[#0ea5e9]" />,
+        icon: <SiReact size={21} />,
+        hoverBorder: "hover:border-sky-300/80",
+        hoverShadow: "hover:shadow-[0_12px_28px_-6px_rgba(14,165,233,0.14)]",
+        iconBoxHover: "group-hover:bg-sky-50 group-hover:border-sky-200/80 group-hover:text-sky-500",
+        accentBar: "bg-sky-500",
       },
       {
         name: "TypeScript",
         subtitle: "Typed JS",
-        icon: <SiTypescript size={19} className="transition-colors group-hover:text-[#3178C6]" />,
+        icon: <SiTypescript size={20} />,
+        hoverBorder: "hover:border-blue-300/80",
+        hoverShadow: "hover:shadow-[0_12px_28px_-6px_rgba(49,120,198,0.14)]",
+        iconBoxHover: "group-hover:bg-blue-50 group-hover:border-blue-200/80 group-hover:text-[#3178C6]",
+        accentBar: "bg-[#3178C6]",
       },
       {
         name: "Tailwind CSS",
         subtitle: "Modern Styling",
-        icon: <SiTailwindcss size={20} className="transition-colors group-hover:text-[#06B6D4]" />,
+        icon: <SiTailwindcss size={21} />,
+        hoverBorder: "hover:border-cyan-300/80",
+        hoverShadow: "hover:shadow-[0_12px_28px_-6px_rgba(6,182,212,0.14)]",
+        iconBoxHover: "group-hover:bg-cyan-50 group-hover:border-cyan-200/80 group-hover:text-[#06B6D4]",
+        accentBar: "bg-[#06B6D4]",
       },
       {
         name: "Shadcn UI",
         subtitle: "Accessible UI",
         icon: (
-          <svg width="19" height="19" viewBox="0 0 256 256" fill="none" stroke="currentColor" strokeWidth="20" strokeLinecap="round" strokeLinejoin="round" className="transition-colors group-hover:text-purple-600">
+          <svg width="20" height="20" viewBox="0 0 256 256" fill="none" stroke="currentColor" strokeWidth="20" strokeLinecap="round" strokeLinejoin="round">
             <line x1="208" y1="128" x2="128" y2="208" />
             <line x1="192" y1="40" x2="40" y2="192" />
           </svg>
         ),
+        hoverBorder: "hover:border-purple-300/80",
+        hoverShadow: "hover:shadow-[0_12px_28px_-6px_rgba(147,51,234,0.14)]",
+        iconBoxHover: "group-hover:bg-purple-50 group-hover:border-purple-200/80 group-hover:text-purple-600",
+        accentBar: "bg-purple-600",
       },
     ],
   },
@@ -72,35 +96,55 @@ const CATEGORIES: TechCategory[] = [
       {
         name: "Node.js",
         subtitle: "Runtime",
-        icon: <FaNodeJs size={20} className="transition-colors group-hover:text-[#5FA04E]" />,
+        icon: <FaNodeJs size={21} />,
+        hoverBorder: "hover:border-emerald-300/80",
+        hoverShadow: "hover:shadow-[0_12px_28px_-6px_rgba(95,160,78,0.14)]",
+        iconBoxHover: "group-hover:bg-emerald-50 group-hover:border-emerald-200/80 group-hover:text-[#5FA04E]",
+        accentBar: "bg-[#5FA04E]",
       },
       {
         name: "Express",
         subtitle: "REST APIs",
-        icon: <SiExpress size={20} className="transition-colors group-hover:text-purple-600" />,
+        icon: <SiExpress size={21} />,
+        hoverBorder: "hover:border-purple-300/80",
+        hoverShadow: "hover:shadow-[0_12px_28px_-6px_rgba(147,51,234,0.14)]",
+        iconBoxHover: "group-hover:bg-purple-50 group-hover:border-purple-200/80 group-hover:text-purple-600",
+        accentBar: "bg-purple-600",
       },
       {
         name: "Clerk",
         subtitle: "Auth & Security",
-        icon: <SiClerk size={20} className="transition-colors group-hover:text-[#6C47FF]" />,
+        icon: <SiClerk size={21} />,
+        hoverBorder: "hover:border-purple-300/80",
+        hoverShadow: "hover:shadow-[0_12px_28px_-6px_rgba(108,71,255,0.14)]",
+        iconBoxHover: "group-hover:bg-purple-50 group-hover:border-purple-200/80 group-hover:text-[#6C47FF]",
+        accentBar: "bg-[#6C47FF]",
       },
       {
         name: "Inngest",
         subtitle: "Workflows & Queues",
         icon: (
-          <svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor" className="transition-colors group-hover:text-[#10B981]">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
             <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
           </svg>
         ),
+        hoverBorder: "hover:border-emerald-300/80",
+        hoverShadow: "hover:shadow-[0_12px_28px_-6px_rgba(16,185,129,0.14)]",
+        iconBoxHover: "group-hover:bg-emerald-50 group-hover:border-emerald-200/80 group-hover:text-[#10B981]",
+        accentBar: "bg-[#10B981]",
       },
       {
         name: "Gemini API",
         subtitle: "Multimodal AI",
         icon: (
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" className="transition-colors group-hover:text-[#1A73E8]">
+          <svg width="21" height="21" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
             <path d="M12 24C12 17.3726 6.62742 12 0 12C6.62742 12 12 6.62742 12 0C12 6.62742 17.3726 12 24 12C17.3726 12 12 17.3726 12 24Z" />
           </svg>
         ),
+        hoverBorder: "hover:border-blue-300/80",
+        hoverShadow: "hover:shadow-[0_12px_28px_-6px_rgba(26,115,232,0.14)]",
+        iconBoxHover: "group-hover:bg-blue-50 group-hover:border-blue-200/80 group-hover:text-[#1A73E8]",
+        accentBar: "bg-[#1A73E8]",
       },
     ],
   },
@@ -111,12 +155,20 @@ const CATEGORIES: TechCategory[] = [
       {
         name: "PostgreSQL",
         subtitle: "Relational Database",
-        icon: <SiPostgresql size={20} className="transition-colors group-hover:text-[#4169E1]" />,
+        icon: <SiPostgresql size={21} />,
+        hoverBorder: "hover:border-blue-300/80",
+        hoverShadow: "hover:shadow-[0_12px_28px_-6px_rgba(65,105,225,0.14)]",
+        iconBoxHover: "group-hover:bg-blue-50 group-hover:border-blue-200/80 group-hover:text-[#4169E1]",
+        accentBar: "bg-[#4169E1]",
       },
       {
         name: "Prisma",
         subtitle: "Type-safe ORM",
-        icon: <SiPrisma size={20} className="transition-colors group-hover:text-purple-600" />,
+        icon: <SiPrisma size={21} />,
+        hoverBorder: "hover:border-purple-300/80",
+        hoverShadow: "hover:shadow-[0_12px_28px_-6px_rgba(147,51,234,0.14)]",
+        iconBoxHover: "group-hover:bg-purple-50 group-hover:border-purple-200/80 group-hover:text-purple-600",
+        accentBar: "bg-purple-600",
       },
     ],
   },
@@ -127,22 +179,38 @@ const CATEGORIES: TechCategory[] = [
       {
         name: "JavaScript",
         subtitle: "Web Standards",
-        icon: <SiJavascript size={19} className="transition-colors group-hover:text-[#F7DF1E]" />,
+        icon: <SiJavascript size={20} />,
+        hoverBorder: "hover:border-amber-300/80",
+        hoverShadow: "hover:shadow-[0_12px_28px_-6px_rgba(234,179,8,0.14)]",
+        iconBoxHover: "group-hover:bg-amber-50 group-hover:border-amber-200/80 group-hover:text-[#EAB308]",
+        accentBar: "bg-[#EAB308]",
       },
       {
         name: "Java",
         subtitle: "OOP & Systems",
-        icon: <FaJava size={22} className="transition-colors group-hover:text-[#ED8B00]" />,
+        icon: <FaJava size={22} />,
+        hoverBorder: "hover:border-orange-300/80",
+        hoverShadow: "hover:shadow-[0_12px_28px_-6px_rgba(237,139,0,0.14)]",
+        iconBoxHover: "group-hover:bg-orange-50 group-hover:border-orange-200/80 group-hover:text-[#ED8B00]",
+        accentBar: "bg-[#ED8B00]",
       },
       {
         name: "C / C++",
         subtitle: "Algorithms & DSA",
-        icon: <SiCplusplus size={20} className="transition-colors group-hover:text-[#00599C]" />,
+        icon: <SiCplusplus size={21} />,
+        hoverBorder: "hover:border-blue-300/80",
+        hoverShadow: "hover:shadow-[0_12px_28px_-6px_rgba(0,89,156,0.14)]",
+        iconBoxHover: "group-hover:bg-blue-50 group-hover:border-blue-200/80 group-hover:text-[#00599C]",
+        accentBar: "bg-[#00599C]",
       },
       {
         name: "Git",
         subtitle: "Version Control",
-        icon: <FaGitAlt size={22} className="transition-colors group-hover:text-[#F05032]" />,
+        icon: <FaGitAlt size={22} />,
+        hoverBorder: "hover:border-orange-300/80",
+        hoverShadow: "hover:shadow-[0_12px_28px_-6px_rgba(240,80,50,0.14)]",
+        iconBoxHover: "group-hover:bg-orange-50 group-hover:border-orange-200/80 group-hover:text-[#F05032]",
+        accentBar: "bg-[#F05032]",
       },
     ],
   },
@@ -201,7 +269,7 @@ export default function TechGrid() {
             href="/resume.pdf"
             target="_blank"
             rel="noopener noreferrer"
-            className="group inline-flex items-center gap-2.5 rounded-xl bg-zinc-900 px-5 py-2.5 font-inter text-xs sm:text-sm font-semibold text-white shadow-sm ring-1 ring-zinc-900/10 transition-all duration-200 hover:bg-zinc-800 hover:shadow-md hover:-translate-y-0.5 active:translate-y-0"
+            className="group inline-flex items-center gap-2.5 rounded-xl bg-zinc-900 px-5 py-2.5 font-inter text-xs sm:text-sm font-semibold text-white shadow-xs ring-1 ring-zinc-900/10 transition-all duration-200 hover:bg-zinc-800 hover:shadow-md hover:-translate-y-0.5 active:translate-y-0"
           >
             <FaFilePdf className="h-4 w-4 text-red-500 transition-transform duration-200 group-hover:scale-110" />
             <span>View Resume</span>
@@ -209,68 +277,130 @@ export default function TechGrid() {
           </a>
         </div>
 
-        {/* Filter Pills */}
+        {/* Filter Pills with Count Badges */}
         <div className="mt-8 flex flex-wrap items-center gap-2">
           <button
             type="button"
             onClick={() => setActiveFilter("all")}
-            className={`rounded-full px-3.5 py-1.5 font-mono text-xs font-medium transition-all duration-200 ${
+            className={`inline-flex items-center gap-1.5 rounded-full px-3.5 py-1.5 font-mono text-xs font-medium transition-all duration-200 cursor-pointer ${
               activeFilter === "all"
-                ? "bg-zinc-900 text-white shadow-2xs"
-                : "border border-zinc-200/80 bg-white text-zinc-600 hover:border-zinc-300 hover:text-zinc-900"
+                ? "bg-zinc-900 text-white shadow-xs ring-1 ring-zinc-900"
+                : "border border-zinc-200/80 bg-white text-zinc-600 hover:border-zinc-300 hover:bg-zinc-50 hover:text-zinc-900"
             }`}
           >
-            All ({totalCount})
+            <span>All</span>
+            <span
+              className={`rounded-full px-1.5 py-0.2 text-[10px] ${
+                activeFilter === "all"
+                  ? "bg-white/20 text-white"
+                  : "bg-zinc-100 text-zinc-500"
+              }`}
+            >
+              {totalCount}
+            </span>
           </button>
           {CATEGORIES.map((cat) => (
             <button
               key={cat.id}
               type="button"
               onClick={() => setActiveFilter(cat.id)}
-              className={`rounded-full px-3.5 py-1.5 font-mono text-xs font-medium transition-all duration-200 ${
+              className={`inline-flex items-center gap-1.5 rounded-full px-3.5 py-1.5 font-mono text-xs font-medium transition-all duration-200 cursor-pointer ${
                 activeFilter === cat.id
-                  ? "bg-zinc-900 text-white shadow-2xs"
-                  : "border border-zinc-200/80 bg-white text-zinc-600 hover:border-zinc-300 hover:text-zinc-900"
+                  ? "bg-zinc-900 text-white shadow-xs ring-1 ring-zinc-900"
+                  : "border border-zinc-200/80 bg-white text-zinc-600 hover:border-zinc-300 hover:bg-zinc-50 hover:text-zinc-900"
               }`}
             >
-              {cat.label} ({cat.items.length})
+              <span>{cat.label}</span>
+              <span
+                className={`rounded-full px-1.5 py-0.2 text-[10px] ${
+                  activeFilter === cat.id
+                    ? "bg-white/20 text-white"
+                    : "bg-zinc-100 text-zinc-500"
+                }`}
+              >
+                {cat.items.length}
+              </span>
             </button>
           ))}
         </div>
 
         {/* Categorized Tech Stacks */}
-        <div className="mt-8 space-y-8">
+        <div className="mt-10 space-y-9">
           {displayedCategories.map((category) => (
-            <div key={category.id} className="space-y-3.5">
+            <div key={category.id} className="space-y-4">
               {/* Category Eyebrow Divider */}
               <div className="flex items-center gap-3">
-                <span className="font-mono text-xs font-semibold uppercase tracking-[0.2em] text-zinc-500">
-                  {category.label}
-                </span>
-                <span className="h-px flex-1 bg-zinc-200/80" />
+                <div className="flex items-center gap-2">
+                  <span className="h-1.5 w-1.5 rounded-full bg-zinc-400" />
+                  <span className="font-mono text-xs font-semibold uppercase tracking-[0.2em] text-zinc-600">
+                    {category.label}
+                  </span>
+                </div>
+                <span className="h-px flex-1 bg-gradient-to-r from-zinc-200/90 via-zinc-200/40 to-transparent" />
                 <span className="font-mono text-[11px] text-zinc-400">
-                  {category.items.length} {category.items.length === 1 ? "tool" : "tools"}
+                  {category.items.length} {category.items.length === 1 ? "skill" : "skills"}
                 </span>
               </div>
 
-              {/* Compact Tech Cards Grid */}
-              <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
+              {/* Enhanced Appealing Tech Cards Grid */}
+              <div className="grid grid-cols-1 gap-3 min-[460px]:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 sm:gap-3.5">
                 {category.items.map((item) => (
                   <div
                     key={item.name}
-                    className="group flex items-center gap-3 rounded-2xl border border-zinc-200/80 bg-white p-3 sm:p-3.5 shadow-[0_2px_8px_-2px_rgba(15,23,42,0.03)] transition-all duration-200 hover:-translate-y-0.5 hover:border-zinc-300 hover:shadow-sm"
+                    className={[
+                      "group relative flex items-center justify-between gap-3 overflow-hidden rounded-2xl border border-zinc-200/80 bg-white p-3.5 sm:p-4",
+                      "shadow-[0_2px_8px_-2px_rgba(15,23,42,0.03)] transition-all duration-300 ease-out",
+                      "hover:-translate-y-1 cursor-default",
+                      item.hoverBorder,
+                      item.hoverShadow,
+                    ].join(" ")}
                   >
-                    <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-zinc-200/60 bg-zinc-50 text-zinc-700 transition-all duration-200 group-hover:scale-105 group-hover:bg-zinc-100/80">
-                      {item.icon}
-                    </div>
-                    <div className="min-w-0 flex-1">
-                      <div className="truncate font-sora text-xs sm:text-sm font-semibold text-zinc-800 transition-colors group-hover:text-zinc-950">
-                        {item.name}
+                    {/* Subtle Ambient Radial Light behind card on hover */}
+                    <div
+                      aria-hidden
+                      className="pointer-events-none absolute -right-6 -top-6 h-24 w-24 rounded-full bg-gradient-to-br from-zinc-100/70 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+                    />
+
+                    {/* Expanding Bottom Brand Accent Line */}
+                    <div
+                      aria-hidden
+                      className={[
+                        "absolute bottom-0 left-1/2 h-[2.5px] w-0 -translate-x-1/2 rounded-full opacity-0 transition-all duration-300 ease-out group-hover:w-16 group-hover:opacity-100",
+                        item.accentBar,
+                      ].join(" ")}
+                    />
+
+                    {/* Left: Icon + Titles */}
+                    <div className="flex min-w-0 items-center gap-3.5">
+                      {/* Icon Container */}
+                      <div
+                        className={[
+                          "flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-zinc-200/70 bg-zinc-50/80 text-zinc-700",
+                          "transition-all duration-300 ease-out group-hover:scale-105",
+                          item.iconBoxHover,
+                        ].join(" ")}
+                      >
+                        {item.icon}
                       </div>
-                      <div className="truncate font-mono text-[11px] text-zinc-400 transition-colors group-hover:text-zinc-500">
-                        {item.subtitle}
+
+                      {/* Text */}
+                      <div className="min-w-0 flex-1">
+                        <div className="truncate font-sora text-sm font-semibold text-zinc-800 transition-colors duration-200 group-hover:text-zinc-950">
+                          {item.name}
+                        </div>
+                        <div className="truncate font-mono text-[11px] text-zinc-400 transition-colors duration-200 group-hover:text-zinc-500">
+                          {item.subtitle}
+                        </div>
                       </div>
                     </div>
+
+                    {/* Right: Subtle mini-arrow indicator on hover */}
+                    <span
+                      aria-hidden
+                      className="hidden shrink-0 font-mono text-xs text-zinc-300 opacity-0 transition-all duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:opacity-100 group-hover:text-zinc-400 min-[460px]:inline-block"
+                    >
+                      ↗
+                    </span>
                   </div>
                 ))}
               </div>
