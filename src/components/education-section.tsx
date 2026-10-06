@@ -1,5 +1,7 @@
 "use client";
 
+import Image from "next/image";
+
 export default function EducationSection() {
   return (
     <section id="education" className="w-full">
@@ -128,26 +130,15 @@ export default function EducationSection() {
             className="group relative flex flex-col items-center justify-between text-center rounded-3xl border border-zinc-200/80 bg-white p-8 sm:p-10 shadow-[0_4px_24px_-6px_rgba(15,23,42,0.05)] transition-all duration-300 transform-gpu hover:-translate-y-1 hover:border-zinc-300 hover:shadow-[0_16px_40px_-10px_rgba(15,23,42,0.08)]"
           >
             <div className="flex flex-col items-center">
-              {/* Harvard CS50 Logo Badge */}
-              <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-white border border-zinc-200/80 shadow-2xs transition-transform duration-300 group-hover:scale-105">
-                <svg width="34" height="34" viewBox="0 0 36 36" fill="none" aria-label="Harvard CS50 Logo">
-                  <path
-                    d="M18 3.5C18 3.5 29 5.5 29 14.5C29 23.5 21 30.5 18 32.5C15 30.5 7 23.5 7 14.5C7 5.5 18 3.5 18 3.5Z"
-                    fill="#A51C30"
-                  />
-                  <text
-                    x="18"
-                    y="20.5"
-                    fill="#FFFFFF"
-                    fontFamily="var(--font-sora), sans-serif"
-                    fontWeight="800"
-                    fontSize="8.5"
-                    textAnchor="middle"
-                    letterSpacing="0.5"
-                  >
-                    CS50
-                  </text>
-                </svg>
+              {/* Harvard Veritas Official Logo Badge */}
+              <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-white border border-zinc-200/80 shadow-2xs transition-transform duration-300 group-hover:scale-105 p-2">
+                <Image
+                  src="/harvard-logo.png"
+                  alt="Harvard University Veritas Shield"
+                  width={44}
+                  height={44}
+                  className="h-full w-auto object-contain"
+                />
               </div>
 
               <h3 className="mt-6 font-sora text-xl font-bold tracking-tight text-[#18181b] sm:text-2xl transition-colors duration-200 group-hover:text-zinc-950">
