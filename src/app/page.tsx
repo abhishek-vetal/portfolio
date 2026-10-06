@@ -95,33 +95,37 @@ export default function Home() {
       {/* Hero */}
       <section
         id="home"
-        className="relative mx-auto flex min-h-[calc(100vh-4rem)] w-full max-w-7xl flex-col items-center justify-center px-4 py-20 text-center sm:px-6"
+        className="relative mx-auto flex min-h-[calc(100vh-4rem)] w-full max-w-7xl flex-col items-center justify-center px-4 py-16 text-center sm:px-6 sm:py-24"
       >
-        <div className="relative flex flex-col items-center">
+        {/* Subtle ambient radial background glow */}
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0 -z-10 flex items-center justify-center overflow-hidden"
+        >
+          <div className="h-[420px] w-[640px] rounded-full bg-gradient-to-tr from-zinc-200/40 via-zinc-100/50 to-transparent blur-3xl opacity-60" />
+        </div>
 
-          {/* Fluid display headline — Sora font staggered entrance animation 1 */}
-          <h1 className="hero-animate-1 font-sora text-[clamp(3rem,8.5vw,8rem)] font-extrabold leading-[1.02] tracking-[-0.04em] text-[#222222] text-balance">
-            Hey,{"\u00A0"}I&apos;m{" "}Abhishek
+        <div className="relative flex flex-col items-center max-w-3xl">
+          {/* Display headline — Sora font with refined, balanced proportions */}
+          <h1 className="hero-animate-1 font-sora text-4xl font-extrabold tracking-[-0.035em] text-zinc-900 sm:text-6xl md:text-7xl lg:text-[5rem] text-balance leading-[1.08]">
+            Hey,{"\u00A0"}I&apos;m{" "}
+            <span className="bg-gradient-to-r from-zinc-900 via-zinc-800 to-zinc-600 bg-clip-text text-transparent">
+              Abhishek
+            </span>
           </h1>
 
-          {/* Animated decorative accent line — animation 2 */}
-          <div
-            aria-hidden
-            className="hero-animate-2 mt-8 h-px w-20 origin-center bg-gradient-to-r from-transparent via-zinc-400 to-transparent sm:mt-10"
-          />
-
-          {/* Role title — animation 3 */}
-          <p className="hero-animate-3 mt-8 text-xl font-semibold tracking-tight text-zinc-800 sm:mt-10 sm:text-2xl">
+          {/* Role title */}
+          <p className="hero-animate-2 mt-4 font-sora text-xl font-semibold tracking-tight text-zinc-800 sm:mt-5 sm:text-2xl md:text-3xl">
             Software Developer
           </p>
 
-          {/* Tagline bio — animation 4 */}
-          <p className="hero-animate-4 mt-5 max-w-2xl text-balance text-base font-light leading-relaxed text-zinc-600 sm:text-lg">
+          {/* Tagline bio */}
+          <p className="hero-animate-3 mt-4 max-w-xl text-balance text-base font-normal leading-relaxed text-zinc-600 sm:text-lg">
             I build full-stack products — from first commit to production. Looking to do the same with a great team.
           </p>
 
-          {/* CTA Buttons — animation 5 */}
-          <div className="hero-animate-5 mt-9 flex flex-wrap items-center justify-center gap-3.5">
+          {/* CTA Buttons — unified pill design matching navbar */}
+          <div className="hero-animate-4 mt-8 flex flex-wrap items-center justify-center gap-3.5 sm:gap-4">
             <a
               href="/work"
               onClick={(e) => {
@@ -129,10 +133,10 @@ export default function Home() {
                 document.getElementById("work")?.scrollIntoView({ behavior: "smooth" });
                 window.history.pushState(null, "", "/work");
               }}
-              className="inline-flex items-center gap-2 rounded-xl bg-zinc-900 px-6 py-3 font-inter text-sm font-semibold text-white shadow-xs transition-all duration-200 hover:bg-zinc-800 hover:-translate-y-0.5 active:translate-y-0"
+              className="group inline-flex items-center gap-2 rounded-full bg-zinc-900 px-6 py-3 font-inter text-sm font-semibold text-white shadow-xs transition-all duration-200 hover:bg-zinc-800 hover:-translate-y-0.5 hover:shadow-md active:translate-y-0"
             >
               <span>Explore Work</span>
-              <span className="text-xs opacity-80">↓</span>
+              <span className="text-xs opacity-70 transition-transform duration-200 group-hover:translate-y-0.5">↓</span>
             </a>
 
             <a
@@ -142,10 +146,10 @@ export default function Home() {
                 document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
                 window.history.pushState(null, "", "/contact");
               }}
-              className="inline-flex items-center gap-2 rounded-xl border border-zinc-300/80 bg-white px-6 py-3 font-inter text-sm font-semibold text-zinc-900 shadow-2xs transition-all duration-200 hover:border-zinc-400 hover:bg-zinc-50 hover:-translate-y-0.5 active:translate-y-0"
+              className="group inline-flex items-center gap-2 rounded-full border border-zinc-200 bg-white px-6 py-3 font-inter text-sm font-semibold text-zinc-900 shadow-2xs transition-all duration-200 hover:border-zinc-300 hover:bg-zinc-50 hover:-translate-y-0.5 hover:shadow-xs active:translate-y-0"
             >
               <span>Get in Touch</span>
-              <span className="text-xs text-zinc-400">→</span>
+              <span className="text-xs text-zinc-400 transition-transform duration-200 group-hover:translate-x-0.5">→</span>
             </a>
           </div>
         </div>

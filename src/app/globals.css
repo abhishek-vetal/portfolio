@@ -96,23 +96,23 @@ h1, h2, h3, h4, h5, h6 {
 
 
 .hero-animate-1 {
-  animation: heroFadeUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.1s both;
+  animation: heroFadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.08s both;
 }
 
 .hero-animate-2 {
-  animation: lineExpand 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.35s both;
+  animation: heroFadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.2s both;
 }
 
 .hero-animate-3 {
-  animation: heroFadeUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.45s both;
+  animation: heroFadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.32s both;
 }
 
 .hero-animate-4 {
-  animation: heroFadeUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.6s both;
+  animation: heroFadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.44s both;
 }
 
 .hero-animate-5 {
-  animation: heroFadeUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.75s both;
+  animation: heroFadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.56s both;
 }
 
 
