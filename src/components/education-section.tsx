@@ -81,11 +81,11 @@ export default function EducationSection() {
           </span>
         </div>
 
-        {/* 3 Side-by-Side Portrait Cards */}
-        <div className="mt-8 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+        {/* 2 Side-by-Side Portrait Cards */}
+        <div className="mt-8 grid grid-cols-1 gap-6 md:grid-cols-2">
           {/* Card 1: Scrimba Fullstack Certification */}
           <div
-            className="group relative flex flex-col items-center justify-between text-center rounded-3xl border border-zinc-200/80 bg-white p-7 sm:p-8 shadow-[0_4px_24px_-6px_rgba(15,23,42,0.05)] transition-all duration-300 transform-gpu hover:-translate-y-1 hover:border-zinc-300 hover:shadow-[0_16px_40px_-10px_rgba(15,23,42,0.08)]"
+            className="group relative flex flex-col items-center justify-between text-center rounded-3xl border border-zinc-200/80 bg-white p-8 sm:p-10 shadow-[0_4px_24px_-6px_rgba(15,23,42,0.05)] transition-all duration-300 transform-gpu hover:-translate-y-1 hover:border-zinc-300 hover:shadow-[0_16px_40px_-10px_rgba(15,23,42,0.08)]"
           >
             <div className="flex flex-col items-center">
               {/* Scrimba Official Logo Badge */}
@@ -98,7 +98,7 @@ export default function EducationSection() {
                 </svg>
               </div>
 
-              <h3 className="mt-6 font-sora text-lg font-bold tracking-tight text-[#18181b] sm:text-xl transition-colors duration-200 group-hover:text-zinc-950">
+              <h3 className="mt-6 font-sora text-xl font-bold tracking-tight text-[#18181b] sm:text-2xl transition-colors duration-200 group-hover:text-zinc-950">
                 The Fullstack Developer Path
               </h3>
 
@@ -125,7 +125,7 @@ export default function EducationSection() {
 
           {/* Card 2: CS50 SQL Certification */}
           <div
-            className="group relative flex flex-col items-center justify-between text-center rounded-3xl border border-zinc-200/80 bg-white p-7 sm:p-8 shadow-[0_4px_24px_-6px_rgba(15,23,42,0.05)] transition-all duration-300 transform-gpu hover:-translate-y-1 hover:border-zinc-300 hover:shadow-[0_16px_40px_-10px_rgba(15,23,42,0.08)]"
+            className="group relative flex flex-col items-center justify-between text-center rounded-3xl border border-zinc-200/80 bg-white p-8 sm:p-10 shadow-[0_4px_24px_-6px_rgba(15,23,42,0.05)] transition-all duration-300 transform-gpu hover:-translate-y-1 hover:border-zinc-300 hover:shadow-[0_16px_40px_-10px_rgba(15,23,42,0.08)]"
           >
             <div className="flex flex-col items-center">
               {/* Harvard CS50 Logo Badge */}
@@ -150,7 +150,7 @@ export default function EducationSection() {
                 </svg>
               </div>
 
-              <h3 className="mt-6 font-sora text-lg font-bold tracking-tight text-[#18181b] sm:text-xl transition-colors duration-200 group-hover:text-zinc-950">
+              <h3 className="mt-6 font-sora text-xl font-bold tracking-tight text-[#18181b] sm:text-2xl transition-colors duration-200 group-hover:text-zinc-950">
                 CS50&apos;s Introduction to Databases with SQL
               </h3>
 
@@ -171,40 +171,6 @@ export default function EducationSection() {
               </a>
               <span className="font-mono text-xs font-light text-zinc-400">
                 Issued by <strong className="font-medium text-zinc-700 text-xs">Harvard University</strong> · 2026
-              </span>
-            </div>
-          </div>
-
-          {/* Card 3: LeetCode & Data Structures */}
-          <div
-            className="group relative flex flex-col items-center justify-between text-center rounded-3xl border border-zinc-200/80 bg-white p-7 sm:p-8 shadow-[0_4px_24px_-6px_rgba(15,23,42,0.05)] transition-all duration-300 transform-gpu hover:-translate-y-1 hover:border-zinc-300 hover:shadow-[0_16px_40px_-10px_rgba(15,23,42,0.08)] md:col-span-2 lg:col-span-1"
-          >
-            <div className="flex flex-col items-center">
-              {/* LeetCode Original Multi-Color SVG Logo Badge */}
-              <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-white border border-zinc-200/80 shadow-2xs transition-transform duration-300 group-hover:scale-105">
-                <svg width="34" height="34" viewBox="0 0 40 40" fill="none" aria-label="LeetCode Logo">
-                  <path d="M21 11.5C24.5 11.5 28.5 13 28.5 15.5" stroke="#FFA116" strokeWidth="4.2" strokeLinecap="round"/>
-                  <path d="M17 29.5C21 32 28.5 29.5 28.5 25" stroke="#FFA116" strokeWidth="4.2" strokeLinecap="round"/>
-                  <path d="M25 5.5L10 20.5L17.5 29" stroke="#000000" strokeWidth="4.5" strokeLinecap="round" strokeLinejoin="round"/>
-                  <path d="M19 20.5H33" stroke="#B0B0B0" strokeWidth="4.2" strokeLinecap="round"/>
-                </svg>
-              </div>
-
-              <h3 className="mt-6 font-sora text-lg font-bold tracking-tight text-[#18181b] sm:text-xl transition-colors duration-200 group-hover:text-zinc-950">
-                LeetCode
-              </h3>
-
-              <p className="mt-3 text-sm leading-relaxed text-zinc-600 max-w-sm">
-                Practiced consistently on LeetCode to strengthen core data structures and algorithms fundamentals.
-              </p>
-            </div>
-
-            <div className="mt-8 pt-4 w-full flex flex-col items-center gap-3">
-              <span className="inline-flex items-center gap-2 rounded-xl border border-zinc-200/80 bg-white px-5 py-2.5 font-mono text-xs font-semibold text-zinc-800 shadow-2xs transition-colors duration-200 group-hover:border-zinc-300">
-                <span>100+ Problems Solved</span>
-              </span>
-              <span className="font-mono text-[11px] font-light text-zinc-400">
-                Data Structures & Algorithms
               </span>
             </div>
           </div>
