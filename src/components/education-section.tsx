@@ -109,7 +109,7 @@ export default function EducationSection() {
 
             <div className="mt-8 pt-4 w-full flex flex-col items-center gap-3">
               <a
-                href="/certificates/scrimba-fullstack.pdf"
+                href="https://scrimba.com/u43a9e20:certs;cert23wfboWopT5WtF2QfcGrUrLhWC6be21rGzE1ok8yyZvMLGEL"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 rounded-xl bg-zinc-900 px-5 py-2.5 font-mono text-xs font-semibold text-white shadow-sm transition-all duration-200 hover:bg-zinc-800 hover:-translate-y-0.5 active:translate-y-0"
