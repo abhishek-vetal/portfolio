@@ -1,5 +1,26 @@
-<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <rect width="32" height="32" rx="8" fill="#121214"/>
-  <rect x="0.75" y="0.75" width="30.5" height="30.5" rx="7.25" stroke="white" stroke-opacity="0.15" stroke-width="1.5"/>
-  <path d="M16 6.5L24.8 25.5H20.4L18.7 21.5H13.3L11.6 25.5H7.2L16 6.5ZM16 12.2L14.2 18H17.8L16 12.2Z" fill="#FAFAFA"/>
+<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Obsidian Squircle Base -->
+  <rect width="64" height="64" rx="16" fill="#09090B"/>
+  <rect x="0.75" y="0.75" width="62.5" height="62.5" rx="15.25" stroke="white" stroke-opacity="0.14" stroke-width="1.5"/>
+
+  <defs>
+    <!-- Vibrant Electric Purple Gradient -->
+    <linearGradient id="purpleGrad" x1="22" y1="30" x2="42" y2="50" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#C084FC"/>
+      <stop offset="1" stop-color="#9333EA"/>
+    </linearGradient>
+    <radialGradient id="ambientGlow" cx="50%" cy="50%" r="50%">
+      <stop stop-color="#9333EA" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#9333EA" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Ambient Purple Core Glow -->
+  <circle cx="32" cy="34" r="22" fill="url(#ambientGlow)"/>
+
+  <!-- Bold Architectural 'A' Frame in Crisp White -->
+  <path d="M32 12L49.5 49H42L37.8 39.5H26.2L22 49H14.5L32 12ZM32 23.5L28.6 33.5H35.4L32 23.5Z" fill="#FFFFFF"/>
+
+  <!-- Dynamic Electric Purple 'V' Chevron Accent (Crossbar Integration) -->
+  <path d="M21.5 34L32 48.5L42.5 34H36.8L32 40.8L27.2 34H21.5Z" fill="url(#purpleGrad)"/>
 </svg>
