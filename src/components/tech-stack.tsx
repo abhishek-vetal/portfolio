@@ -1,17 +1,17 @@
 import React from "react";
 
 /**
- * Tech stack shown as a simple static row of chips.
+ * Tech stack shown as refined engineering tags.
  */
 export default function TechStack({ stack }: { stack: string[] }) {
   return (
-    <div className="mt-6 flex flex-wrap gap-2">
+    <div className="mt-6 flex flex-wrap items-center gap-1.5">
       {stack.map((tech) => (
         <span
           key={tech}
-          className="inline-flex items-center gap-1.5 rounded-full bg-white px-3 py-1.5 text-xs font-medium text-zinc-700 border border-zinc-200/80 shadow-2xs transition-colors hover:border-zinc-300"
+          className="inline-flex items-center rounded-lg border border-zinc-200/80 bg-zinc-50/90 px-2.5 py-1 font-mono text-[11px] font-medium text-zinc-700 shadow-2xs transition-all duration-200 hover:border-zinc-300 hover:bg-white hover:text-zinc-900"
         >
-          <span>{tech}</span>
+          {tech}
         </span>
       ))}
     </div>

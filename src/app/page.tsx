@@ -8,9 +8,25 @@ import { Footer } from "@/components/footer";
 
 const FEATURED_PROJECTS = [
   {
-    name: "VAANI AI Voice Cloning Platform",
+    tag: "01 / FEATURED",
+    role: "AI Voice SaaS",
+    name: "Vaani AI Voice Platform",
     description:
       "Full-stack AI voice cloning and generation platform powered by self-hosted Chatterbox TTS, Cloudflare R2 storage, and usage-based Polar billing.",
+    features: [
+      {
+        title: "Voice Cloning & Custom TTS",
+        detail: "Self-hosted Chatterbox neural model with configurable temperature & top-p controls.",
+      },
+      {
+        title: "Cloud Storage & Audio Pipeline",
+        detail: "Cloudflare R2 bucket integration with PostgreSQL/Prisma audio metadata.",
+      },
+      {
+        title: "Auth & Usage-Based Billing",
+        detail: "Clerk organization-based isolation, tRPC endpoints, and Polar subscription metering.",
+      },
+    ],
     points: [
       "Built a full-stack AI voice platform to browse built-in voices, clone custom audio, and synthesize speech from text using a self-hosted Chatterbox TTS model.",
       "Engineered audio storage in Cloudflare R2 with PostgreSQL/Prisma metadata, plus configurable TTS controls (temperature, top-p, top-k, repetition penalty).",
@@ -35,9 +51,25 @@ const FEATURED_PROJECTS = [
     ],
   },
   {
-    name: "SAVE AI Finance Platform",
+    tag: "02 / FEATURED",
+    role: "FinTech & AI",
+    name: "Save AI Finance Platform",
     description:
       "Full-stack AI personal finance platform featuring Plaid bank syncing, Gemini AI receipt scanning, and automated monthly spending reports.",
+    features: [
+      {
+        title: "Automated Banking Sync",
+        detail: "Plaid API integration for real-time transaction ingestion and balance tracking.",
+      },
+      {
+        title: "Gemini AI Receipt OCR",
+        detail: "Multimodal receipt parsing that automatically extracts vendors, dates, and amounts.",
+      },
+      {
+        title: "Event-Driven Alerts & Analytics",
+        detail: "Inngest background cron jobs & Resend for automated 80% budget threshold alerts.",
+      },
+    ],
     points: [
       "Built a full-stack personal finance platform with manual and Plaid automated bank account syncing, budget management, and real-time transaction tracking.",
       "Engineered AI-powered receipt scanning & monthly financial insights via Gemini API, with 80% threshold budget alerts powered by Inngest and Resend.",

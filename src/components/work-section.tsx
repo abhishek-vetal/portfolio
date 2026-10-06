@@ -4,15 +4,23 @@ import React, { useState, useEffect, useRef } from "react";
 import ProjectMedia from "@/components/project-media";
 import TechStack from "@/components/tech-stack";
 
-interface Project {
+export interface ProjectFeature {
+  title: string;
+  detail: string;
+}
+
+export interface Project {
   name: string;
+  fullName?: string;
+  tag?: string;
+  role?: string;
   description: string;
+  features?: ProjectFeature[];
   points: string[];
   stack: string[];
   live: string | null;
   github: string;
   screenshots: { src: string; label: string }[];
-  tag?: string;
 }
 
 interface WorkPoint {
@@ -76,7 +84,7 @@ export default function WorkSection({ projects = [], workPoints = DEFAULT_WORK_P
 
   return (
     <section id="work" ref={sectionRef} className="w-full">
-      <div className="mx-auto w-full max-w-7xl px-4 py-24 sm:px-6">
+      <div className="mx-auto w-full max-w-7xl px-4 py-20 sm:px-6 sm:py-24">
         {/* Section Header */}
         <div
           className={[
@@ -84,7 +92,7 @@ export default function WorkSection({ projects = [], workPoints = DEFAULT_WORK_P
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4",
           ].join(" ")}
         >
-          <h2 className="font-display text-3xl font-bold tracking-tight text-[#222222] sm:text-4xl">
+          <h2 className="font-heading text-3xl font-bold tracking-tight text-[#222222] sm:text-4xl">
             Work
           </h2>
           <span className="font-mono text-xs font-medium uppercase tracking-[0.25em] text-zinc-600">
@@ -92,10 +100,10 @@ export default function WorkSection({ projects = [], workPoints = DEFAULT_WORK_P
           </span>
         </div>
 
-        {/* 3 Work Highlights Bar — Soft Integrated Glass Banner */}
+        {/* 3 Work Highlights Bar — Sleek Modern Banner */}
         <div
           className={[
-            "mt-10 grid gap-6 rounded-2xl border border-zinc-200/90 bg-white/80 p-6 backdrop-blur-md shadow-[0_4px_20px_-4px_rgba(15,23,42,0.03)] sm:p-8 lg:grid-cols-3 lg:gap-0 lg:divide-x lg:divide-zinc-200/80 transition-all duration-700 ease-out",
+            "mt-10 grid gap-6 rounded-2xl border border-zinc-200/90 bg-white p-6 shadow-[0_2px_12px_-4px_rgba(15,23,42,0.03)] sm:p-7 lg:grid-cols-3 lg:gap-0 lg:divide-x lg:divide-zinc-200/80 transition-all duration-700 ease-out",
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4 pointer-events-none",
           ].join(" ")}
         >
@@ -120,9 +128,9 @@ export default function WorkSection({ projects = [], workPoints = DEFAULT_WORK_P
             ];
 
             const badgeStyles = [
-              "border-emerald-200/80 bg-emerald-50/60 shadow-2xs",
-              "border-indigo-200/80 bg-indigo-50/60 shadow-2xs",
-              "border-amber-200/80 bg-amber-50/60 shadow-2xs",
+              "border-emerald-200/80 bg-emerald-50/70 shadow-2xs",
+              "border-indigo-200/80 bg-indigo-50/70 shadow-2xs",
+              "border-amber-200/80 bg-amber-50/70 shadow-2xs",
             ][idx % 3];
 
             return (
@@ -144,101 +152,119 @@ export default function WorkSection({ projects = [], workPoints = DEFAULT_WORK_P
           })}
         </div>
 
-        {/* Projects — Asymmetrical Studio Bento Cards */}
-        <div className="mt-14 flex flex-col gap-12 sm:gap-16">
+        {/* Projects — Elevated Studio Bento Cards */}
+        <div className="mt-14 flex flex-col gap-10 sm:gap-14">
           {projects.map((project, pIdx) => (
             <article
               key={project.name}
-              style={{ transitionDelay: `${100 + pIdx * 100}ms` }}
+              style={{ transitionDelay: `${100 + pIdx * 120}ms` }}
               className={[
-                "group overflow-hidden rounded-3xl border border-zinc-200/80 bg-[#f9f9f8] p-5 sm:p-7 lg:p-8 shadow-[0_4px_28px_-6px_rgba(15,23,42,0.04)] transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] transform-gpu hover:border-zinc-300 hover:shadow-[0_20px_48px_-12px_rgba(15,23,42,0.08)]",
+                "group relative overflow-hidden rounded-3xl border border-zinc-200/90 bg-white p-6 sm:p-8 lg:p-10",
+                "shadow-[0_4px_24px_-4px_rgba(15,23,42,0.04)] transition-all duration-500 ease-out",
+                "hover:border-zinc-300 hover:shadow-[0_20px_48px_-12px_rgba(15,23,42,0.08)]",
                 isVisible
                   ? "opacity-100 translate-y-0 blur-0 scale-100"
                   : "opacity-0 translate-y-10 blur-xs scale-[0.98] pointer-events-none",
               ].join(" ")}
             >
-              <div className="grid grid-cols-1 gap-6 lg:grid-cols-12 lg:gap-10 lg:items-center">
-                {/* Left Column (5 Cols): Editorial Content */}
-                <div className="flex flex-col justify-between lg:col-span-5">
+              {/* Subtle ambient light on card corner */}
+              <div
+                aria-hidden
+                className="pointer-events-none absolute -right-24 -top-24 h-72 w-72 rounded-full bg-gradient-to-br from-zinc-100/70 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+              />
+
+              <div className="grid grid-cols-1 gap-8 lg:grid-cols-12 lg:gap-10 lg:items-center">
+                {/* Left Column (5 Cols on LG): Editorial Content */}
+                <div className="flex flex-col justify-between lg:col-span-5 z-10">
                   <div>
-                    <div>
-                      <h3 className="font-sora text-xl font-bold tracking-tight text-[#222222] sm:text-2xl lg:text-2xl sm:truncate">
-                        {project.name}
-                      </h3>
+                    {/* Eyebrow Meta Row */}
+                    <div className="flex flex-wrap items-center gap-2.5">
+                      <span className="font-mono text-xs font-semibold uppercase tracking-[0.2em] text-zinc-500">
+                        {project.tag ?? `0${pIdx + 1} / FEATURED`}
+                      </span>
+                      <span className="h-3 w-px bg-zinc-300" />
+                      <span className="rounded-md border border-zinc-200/70 bg-zinc-50 px-2 py-0.5 font-mono text-[11px] font-medium text-zinc-600">
+                        {project.role ?? "Full-Stack Project"}
+                      </span>
+                      {project.live && (
+                        <span className="inline-flex items-center gap-1.5 rounded-full border border-emerald-200 bg-emerald-50/80 px-2.5 py-0.5 font-mono text-[10px] font-medium text-emerald-700">
+                          <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                          Live
+                        </span>
+                      )}
                     </div>
 
-                    <p className="mt-3 text-sm leading-relaxed text-zinc-600">
+                    {/* Project Title */}
+                    <h3 className="mt-3.5 font-sora text-2xl font-bold tracking-tight text-[#222222] sm:text-3xl">
+                      {project.name}
+                    </h3>
+
+                    {/* Description */}
+                    <p className="mt-3 text-sm sm:text-[15px] leading-relaxed text-zinc-600">
                       {project.description}
                     </p>
 
-                    <ul className="mt-4 flex flex-col gap-2">
-                      {project.points.map((point) => (
-                        <li key={point} className="flex items-start gap-2.5">
-                          <svg
-                            width="15"
-                            height="15"
-                            viewBox="0 0 16 16"
-                            fill="none"
-                            aria-hidden
-                            className="mt-0.5 shrink-0 text-zinc-800"
-                          >
-                            <circle cx="8" cy="8" r="7" stroke="currentColor" strokeWidth="1.5" />
-                            <path
-                              d="M5 8.2L7 10.2L11 6"
-                              stroke="currentColor"
-                              strokeWidth="1.5"
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                            />
-                          </svg>
-                          <span className="text-xs sm:text-sm leading-relaxed text-zinc-600">
-                            {point}
-                          </span>
-                        </li>
+                    {/* Key Architectural Highlights */}
+                    <div className="mt-5 space-y-2.5">
+                      {(project.features ?? project.points.map((p) => ({ title: "", detail: p }))).map((feat, idx) => (
+                        <div key={idx} className="flex items-start gap-2.5 text-xs sm:text-sm">
+                          <div className="mt-0.5 flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-zinc-900 text-[9px] font-bold text-white shadow-2xs">
+                            ✓
+                          </div>
+                          <p className="leading-relaxed text-zinc-600">
+                            {feat.title && (
+                              <strong className="font-semibold text-zinc-800">{feat.title}: </strong>
+                            )}
+                            {feat.detail}
+                          </p>
+                        </div>
                       ))}
-                    </ul>
+                    </div>
 
+                    {/* Tech Stack Chips */}
                     <TechStack stack={project.stack} />
                   </div>
 
-                  <div className="mt-6 flex flex-wrap items-center gap-3">
+                  {/* Action Buttons */}
+                  <div className="mt-8 flex flex-wrap items-center gap-3">
                     {project.live ? (
                       <a
                         href={project.live}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 rounded-xl bg-[#222222] px-5 py-2.5 text-xs sm:text-sm font-semibold text-white shadow-sm transition-all duration-200 hover:bg-zinc-800 hover:-translate-y-0.5 active:translate-y-0"
+                        className="group/btn inline-flex items-center gap-2 rounded-xl bg-zinc-900 px-5 py-2.5 font-inter text-xs sm:text-sm font-semibold text-white shadow-xs transition-all duration-200 hover:bg-zinc-800 hover:-translate-y-0.5 active:translate-y-0"
                       >
                         <span>Live Demo</span>
-                        <span className="font-mono text-xs">↗</span>
+                        <span className="font-mono text-xs transition-transform duration-200 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5">↗</span>
                       </a>
                     ) : (
                       <span
                         aria-disabled="true"
-                        className="inline-flex cursor-not-allowed items-center gap-2 rounded-xl bg-zinc-200/70 px-5 py-2.5 text-xs sm:text-sm font-semibold text-zinc-400"
+                        className="inline-flex cursor-not-allowed items-center gap-2 rounded-xl bg-zinc-100 px-5 py-2.5 font-inter text-xs sm:text-sm font-semibold text-zinc-400 border border-zinc-200/60"
                       >
                         <span>Live Demo</span>
-                        <span className="rounded-full bg-white px-1.5 py-0.5 text-[9px] font-bold uppercase tracking-wide text-zinc-500">
+                        <span className="rounded-full bg-zinc-200 px-1.5 py-0.5 text-[9px] font-bold uppercase tracking-wide text-zinc-500">
                           soon
                         </span>
                       </span>
                     )}
+
                     <a
                       href={project.github}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 rounded-xl border border-zinc-200 bg-white px-5 py-2.5 text-xs sm:text-sm font-semibold text-zinc-800 shadow-sm transition-all duration-200 hover:border-zinc-300 hover:bg-zinc-50 hover:-translate-y-0.5 active:translate-y-0"
+                      className="inline-flex items-center gap-2 rounded-xl border border-zinc-200/90 bg-white px-5 py-2.5 font-inter text-xs sm:text-sm font-semibold text-zinc-800 shadow-2xs transition-all duration-200 hover:border-zinc-300 hover:bg-zinc-50 hover:-translate-y-0.5 active:translate-y-0"
                     >
-                      <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor" aria-hidden>
+                      <svg width="15" height="15" viewBox="0 0 16 16" fill="currentColor" aria-hidden>
                         <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0016 8c0-4.42-3.58-8-8-8z" />
                       </svg>
-                      <span>GitHub</span>
+                      <span>Source Code</span>
                     </a>
                   </div>
                 </div>
 
-                {/* Right Column (7 Cols): Browser Window */}
-                <div className="relative aspect-[16/12] sm:aspect-[16/10.5] sm:min-h-[18rem] max-h-[26rem] w-full overflow-hidden rounded-2xl border border-zinc-200/80 bg-white shadow-[0_10px_28px_-8px_rgba(15,23,42,0.1)] lg:col-span-7">
+                {/* Right Column (7 Cols on LG): Interactive Browser Mockup */}
+                <div className="relative aspect-[16/11] sm:aspect-[16/10] sm:min-h-[20rem] max-h-[30rem] w-full overflow-hidden rounded-2xl border border-zinc-200/90 bg-white shadow-[0_12px_36px_-10px_rgba(15,23,42,0.08)] lg:col-span-7 z-10 transition-transform duration-300 group-hover:scale-[1.01]">
                   <ProjectMedia
                     name={project.name}
                     url={project.live ?? project.github ?? ""}

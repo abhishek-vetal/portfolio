@@ -18,65 +18,79 @@ export default function ProjectMedia({
   const [paused, setPaused] = useState(false);
   const hasShots = shots.length > 0;
 
-  // Autoplay — skipped entirely for users who prefer reduced motion.
+  // Autoplay — paused on hover, skipped for reduced motion preference
   useEffect(() => {
     if (shots.length < 2 || paused) return;
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     const id = setInterval(() => {
       setActive((i) => (i + 1) % shots.length);
-    }, 4000);
+    }, 4500);
     return () => clearInterval(id);
   }, [paused, shots.length]);
 
   return (
     <div
-      className="flex h-full w-full flex-col overflow-hidden bg-white text-left"
+      className="flex h-full w-full flex-col overflow-hidden bg-white text-left select-none"
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
       onFocus={() => setPaused(true)}
       onBlur={() => setPaused(false)}
     >
       {/* Light Web Browser Chrome Header */}
-      <div className="flex items-center justify-start bg-white px-4 py-2.5 shrink-0 gap-3">
-        <div className="flex items-center gap-2 shrink-0">
-          <span className="h-2.5 w-2.5 rounded-full bg-[#ff5f57]" />
-          <span className="h-2.5 w-2.5 rounded-full bg-[#febc2e]" />
-          <span className="h-2.5 w-2.5 rounded-full bg-[#28c840]" />
+      <div className="flex items-center justify-between border-b border-zinc-200/70 bg-zinc-50/90 px-4 py-2.5 shrink-0 gap-3">
+        <div className="flex items-center gap-3 min-w-0">
+          {/* macOS Style Traffic Lights */}
+          <div className="flex items-center gap-1.5 shrink-0">
+            <span className="h-2.5 w-2.5 rounded-full bg-[#ff5f57]" />
+            <span className="h-2.5 w-2.5 rounded-full bg-[#febc2e]" />
+            <span className="h-2.5 w-2.5 rounded-full bg-[#28c840]" />
+          </div>
+
+          {/* Browser URL Address Bar */}
+          <div className="flex items-center min-w-0">
+            <span className="inline-flex items-center gap-1.5 rounded-lg border border-zinc-200/80 bg-white px-2.5 py-1 font-mono text-[11px] tracking-tight text-zinc-600 shadow-2xs">
+              <svg
+                width="11"
+                height="11"
+                viewBox="0 0 12 12"
+                fill="none"
+                aria-hidden
+                className="shrink-0 text-emerald-600"
+              >
+                <rect
+                  x="2"
+                  y="5"
+                  width="8"
+                  height="6"
+                  rx="1"
+                  stroke="currentColor"
+                  strokeWidth="1.2"
+                />
+                <path
+                  d="M4 5V4a2 2 0 0 1 4 0v1"
+                  stroke="currentColor"
+                  strokeWidth="1.2"
+                />
+              </svg>
+              <span className="truncate max-w-[160px] sm:max-w-[260px]">
+                {url ? url.replace(/^https?:\/\//, "").replace(/\/$/, "") : `${name.toLowerCase()}.app`}
+              </span>
+            </span>
+          </div>
         </div>
 
-        {/* Browser URL Address Bar (Left Aligned) */}
-        <div className="flex items-center justify-start ml-1">
-          <span className="inline-flex items-center gap-1.5 rounded-lg bg-zinc-100/90 px-3 py-1 font-mono text-[11px] tracking-tight text-zinc-600 border border-zinc-200/70 shadow-2xs">
-            <svg
-              width="11"
-              height="11"
-              viewBox="0 0 12 12"
-              fill="none"
-              aria-hidden
-              className="shrink-0 text-emerald-600"
-            >
-              <rect
-                x="2"
-                y="5"
-                width="8"
-                height="6"
-                rx="1"
-                stroke="currentColor"
-                strokeWidth="1.2"
-              />
-              <path
-                d="M4 5V4a2 2 0 0 1 4 0v1"
-                stroke="currentColor"
-                strokeWidth="1.2"
-              />
-            </svg>
-            <span className="truncate max-w-[180px] sm:max-w-[280px]">{url ? url.replace(/^https?:\/\//, "").replace(/\/$/, "") : `${name.toLowerCase()}.app`}</span>
+        {/* Slide Counter Indicator */}
+        {hasShots && (
+          <span className="font-mono text-[11px] text-zinc-400 shrink-0">
+            <strong className="text-zinc-700">{active + 1}</strong>
+            <span className="mx-1">/</span>
+            <span>{shots.length}</span>
           </span>
-        </div>
+        )}
       </div>
 
       {/* Main Screenshot Stage */}
-      <div className="relative min-h-0 flex-1 overflow-hidden bg-zinc-100/40">
+      <div className="relative min-h-0 flex-1 overflow-hidden bg-zinc-100/50">
         {hasShots ? (
           <div className="relative h-full w-full overflow-hidden">
             {shots.map((shot, i) => (
@@ -87,7 +101,7 @@ export default function ProjectMedia({
                 fill
                 unoptimized
                 priority={i === 0}
-                sizes="100vw"
+                sizes="(max-width: 1024px) 100vw, 55vw"
                 className={[
                   "object-cover object-top w-full h-full transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] transform-gpu",
                   i === active
@@ -141,10 +155,10 @@ export default function ProjectMedia({
         )}
       </div>
 
-      {/* Ultra-Minimal Bottom Preview Switcher Bar */}
+      {/* Interactive Bottom Screen Tabs with Screen Labels */}
       {hasShots && (
-        <div className="flex items-center justify-center bg-zinc-50/80 py-2 shrink-0">
-          <div className="flex items-center gap-1.5 rounded-full bg-zinc-200/50 p-1 backdrop-blur-xs">
+        <div className="flex items-center justify-between border-t border-zinc-200/70 bg-zinc-50/90 px-3.5 py-2.5 shrink-0">
+          <div className="flex flex-wrap items-center gap-1.5">
             {shots.map((shot, i) => {
               const isActive = i === active;
               return (
@@ -153,19 +167,27 @@ export default function ProjectMedia({
                   type="button"
                   onClick={() => setActive(i)}
                   aria-pressed={isActive}
-                  aria-label={`Show ${shot.label}`}
                   className={[
-                    "flex h-6 w-6 items-center justify-center rounded-full font-mono text-[11px] font-semibold transition-all duration-150 cursor-pointer",
+                    "inline-flex items-center gap-1.5 rounded-lg px-2.5 py-1 font-mono text-[11px] font-medium transition-all duration-150 cursor-pointer",
                     isActive
-                      ? "bg-[#18181b] text-white shadow-2xs"
-                      : "text-zinc-500 hover:text-zinc-900 hover:bg-white/80",
+                      ? "bg-zinc-900 text-white shadow-2xs"
+                      : "bg-white text-zinc-600 border border-zinc-200/80 hover:border-zinc-300 hover:text-zinc-900",
                   ].join(" ")}
                 >
-                  {i + 1}
+                  <span
+                    className={`h-1.5 w-1.5 rounded-full transition-colors ${
+                      isActive ? "bg-emerald-400" : "bg-zinc-300"
+                    }`}
+                  />
+                  <span>{shot.label}</span>
                 </button>
               );
             })}
           </div>
+
+          <span className="hidden sm:inline-block font-mono text-[10px] text-zinc-400">
+            {paused ? "Paused" : "Hover to pause"}
+          </span>
         </div>
       )}
     </div>
