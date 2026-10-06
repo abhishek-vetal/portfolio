@@ -115,4 +115,68 @@ h1, h2, h3, h4, h5, h6 {
   animation: heroFadeUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.75s both;
 }
 
+/* Lanyard Physical Entrance Sway — Original High-Energy Start Momentum */
+@keyframes lanyardSway {
+  0% {
+    transform: rotate(0deg);
+    animation-timing-function: cubic-bezier(0.12, 0.4, 0.25, 1);
+  }
+  18% {
+    transform: rotate(-42deg);
+    animation-timing-function: cubic-bezier(0.45, 0.05, 0.55, 0.95);
+  }
+  55% {
+    transform: rotate(20deg);
+    animation-timing-function: cubic-bezier(0.45, 0.05, 0.55, 0.95);
+  }
+  82% {
+    transform: rotate(-7.5deg);
+    animation-timing-function: cubic-bezier(0.35, 0.08, 0.45, 0.98);
+  }
+  92% {
+    transform: rotate(2deg);
+    animation-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+/* Secondary Card Flex at the Clip */
+@keyframes cardClipFlex {
+  0% {
+    transform: rotate(0deg);
+    animation-timing-function: cubic-bezier(0.12, 0.4, 0.25, 1);
+  }
+  20% {
+    transform: rotate(4deg);
+    animation-timing-function: cubic-bezier(0.45, 0.05, 0.55, 0.95);
+  }
+  57% {
+    transform: rotate(-3deg);
+    animation-timing-function: cubic-bezier(0.45, 0.05, 0.55, 0.95);
+  }
+  84% {
+    transform: rotate(1.5deg);
+    animation-timing-function: cubic-bezier(0.35, 0.08, 0.45, 0.98);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+.animate-lanyard-swing {
+  animation: lanyardSway 2.4s both;
+  will-change: transform;
+  transform: translateZ(0);
+  transform-origin: 50% 0px;
+}
+
+.animate-card-flex {
+  animation: cardClipFlex 2.4s both;
+  will-change: transform;
+  transform: translateZ(0);
+  transform-origin: 50% 0px;
+}
+
 
