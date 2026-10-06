@@ -14,28 +14,61 @@ export default function EducationSection() {
           </span>
         </div>
 
-        {/* Full-Width Education Card */}
-        <div className="mt-8 rounded-2xl border border-zinc-200/80 bg-white p-6 sm:p-7 shadow-[0_2px_12px_-4px_rgba(15,23,42,0.03)] transition-all duration-300 ease-out hover:border-zinc-300">
-          <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2">
-            <div>
+        {/* Education Cards */}
+        <div className="mt-8 flex flex-col gap-4">
+          {/* Card 1: Self-Directed Full-Stack Development */}
+          <div className="rounded-2xl border border-zinc-200/80 bg-white p-6 sm:p-7 shadow-[0_2px_12px_-4px_rgba(15,23,42,0.03)] transition-all duration-300 ease-out hover:border-zinc-300">
+            <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1 sm:gap-4">
               <h3 className="font-sora text-base font-bold text-zinc-900 sm:text-lg">
-                Pillai HOC College of Engineering and Technology
+                Self-Directed Full-Stack Development
               </h3>
-              <p className="mt-0.5 text-xs font-mono font-light text-zinc-400">
-                Affiliated with University of Mumbai
-              </p>
+              <span className="shrink-0 font-mono text-xs font-light text-zinc-400 tracking-wide">
+                Mar 2025 – Present
+              </span>
             </div>
-            <span className="shrink-0 font-mono text-xs font-light text-zinc-400 tracking-wide">
-              2019 – 2023
-            </span>
+            <p className="mt-2.5 text-sm text-zinc-700 sm:text-base">
+              Built and deployed two full-stack applications, completed Scrimba Full-Stack Path and CS50 SQL
+            </p>
           </div>
-          <p className="mt-3 text-sm text-zinc-700 sm:text-base">
-            B.E in Computer Engineering{" "}
-            <span className="not-italic text-zinc-400">|</span>{" "}
-            <strong className="font-semibold not-italic text-zinc-900">
-              CGPA: 8.75/10.0
-            </strong>
-          </p>
+
+          {/* Card 2: GATE Exam Preparation */}
+          <div className="rounded-2xl border border-zinc-200/80 bg-white p-6 sm:p-7 shadow-[0_2px_12px_-4px_rgba(15,23,42,0.03)] transition-all duration-300 ease-out hover:border-zinc-300">
+            <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1 sm:gap-4">
+              <h3 className="font-sora text-base font-bold text-zinc-900 sm:text-lg">
+                GATE Exam Preparation
+              </h3>
+              <span className="shrink-0 font-mono text-xs font-light text-zinc-400 tracking-wide">
+                Jun 2023 – Feb 2025
+              </span>
+            </div>
+            <p className="mt-2.5 text-sm text-zinc-700 sm:text-base">
+              Core CS: Operating Systems, Computer Networks, DBMS, Data Structures, Algorithms
+            </p>
+          </div>
+
+          {/* Card 3: College */}
+          <div className="rounded-2xl border border-zinc-200/80 bg-white p-6 sm:p-7 shadow-[0_2px_12px_-4px_rgba(15,23,42,0.03)] transition-all duration-300 ease-out hover:border-zinc-300">
+            <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1 sm:gap-4">
+              <div>
+                <h3 className="font-sora text-base font-bold text-zinc-900 sm:text-lg">
+                  Pillai HOC College of Engineering and Technology
+                </h3>
+                <p className="mt-0.5 text-xs font-mono font-light text-zinc-400">
+                  Affiliated with University of Mumbai
+                </p>
+              </div>
+              <span className="shrink-0 font-mono text-xs font-light text-zinc-400 tracking-wide">
+                2019 – 2023
+              </span>
+            </div>
+            <p className="mt-3 text-sm text-zinc-700 sm:text-base">
+              B.E in Computer Engineering{" "}
+              <span className="not-italic text-zinc-400">|</span>{" "}
+              <strong className="font-semibold not-italic text-zinc-900">
+                CGPA: 8.75/10.0
+              </strong>
+            </p>
+          </div>
         </div>
 
         {/* Section 2 Header: Achievements */}
