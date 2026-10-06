@@ -78,15 +78,6 @@ export default function ProjectMedia({
             </span>
           </div>
         </div>
-
-        {/* Slide Counter Indicator */}
-        {hasShots && (
-          <span className="font-mono text-[11px] text-zinc-400 shrink-0">
-            <strong className="text-zinc-700">{active + 1}</strong>
-            <span className="mx-1">/</span>
-            <span>{shots.length}</span>
-          </span>
-        )}
       </div>
 
       {/* Main Screenshot Stage */}
