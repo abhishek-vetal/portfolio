@@ -115,14 +115,18 @@ export function Header() {
         </nav>
 
         <div className="flex items-center gap-3">
-          {/* Availability pill */}
-          <span className="hidden items-center gap-2 rounded-full border border-zinc-200/90 bg-white px-3 py-1 font-inter text-xs font-medium text-zinc-700 shadow-2xs lg:inline-flex">
+          {/* Availability pill — compact & interactive */}
+          <a
+            href="/contact"
+            onClick={(e) => handleNavClick(e, "contact")}
+            className="hidden items-center gap-2 rounded-full border border-zinc-200/90 bg-white px-3 py-1 font-inter text-xs font-medium text-zinc-700 shadow-2xs transition-all duration-200 hover:border-zinc-300 hover:bg-zinc-50 hover:text-zinc-900 md:inline-flex"
+          >
             <span className="relative flex h-2 w-2">
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75 motion-reduce:animate-none" />
               <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500" />
             </span>
-            <span>Available for work</span>
-          </span>
+            <span>Available</span>
+          </a>
 
           {/* Mobile Menu Button */}
           <button
@@ -172,13 +176,17 @@ export function Header() {
                 </a>
               );
             })}
-            <div className="mt-2 flex items-center gap-2 rounded-xl bg-emerald-50/80 px-3.5 py-2 font-sans text-xs font-semibold text-emerald-800">
+            <a
+              href="/contact"
+              onClick={(e) => handleNavClick(e, "contact")}
+              className="mt-2 flex items-center gap-2 rounded-xl border border-emerald-200/80 bg-emerald-50/70 px-3.5 py-2 font-sans text-xs font-semibold text-emerald-800 transition-colors hover:bg-emerald-100/70"
+            >
               <span className="relative flex h-2 w-2">
                 <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
                 <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500" />
               </span>
               <span>Available for work</span>
-            </div>
+            </a>
           </nav>
         </div>
       )}
