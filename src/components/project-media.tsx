@@ -154,42 +154,6 @@ export default function ProjectMedia({
           </div>
         )}
       </div>
-
-      {/* Interactive Bottom Screen Tabs with Screen Labels */}
-      {hasShots && (
-        <div className="flex items-center justify-between border-t border-zinc-200/70 bg-zinc-50/90 px-3.5 py-2.5 shrink-0">
-          <div className="flex flex-wrap items-center gap-1.5">
-            {shots.map((shot, i) => {
-              const isActive = i === active;
-              return (
-                <button
-                  key={shot.src}
-                  type="button"
-                  onClick={() => setActive(i)}
-                  aria-pressed={isActive}
-                  className={[
-                    "inline-flex items-center gap-1.5 rounded-lg px-2.5 py-1 font-mono text-[11px] font-medium transition-all duration-150 cursor-pointer",
-                    isActive
-                      ? "bg-zinc-900 text-white shadow-2xs"
-                      : "bg-white text-zinc-600 border border-zinc-200/80 hover:border-zinc-300 hover:text-zinc-900",
-                  ].join(" ")}
-                >
-                  <span
-                    className={`h-1.5 w-1.5 rounded-full transition-colors ${
-                      isActive ? "bg-emerald-400" : "bg-zinc-300"
-                    }`}
-                  />
-                  <span>{shot.label}</span>
-                </button>
-              );
-            })}
-          </div>
-
-          <span className="hidden sm:inline-block font-mono text-[10px] text-zinc-400">
-            {paused ? "Paused" : "Hover to pause"}
-          </span>
-        </div>
-      )}
     </div>
   );
 }
