@@ -4,7 +4,7 @@ Personal portfolio website showcasing my projects, technical skills, and experie
 
 ## Live Portfolio
 
-[Visit Portfolio](https://abhishek-vetal.vercel.app/)
+[Visit Portfolio](https://abhishek-vetal.tech)
 
 ## About
 
