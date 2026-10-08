@@ -3,6 +3,9 @@
 import React, { useState, useEffect, useRef } from "react";
 import ProjectMedia from "@/components/project-media";
 import TechStack from "@/components/tech-stack";
+import { CiWavePulse1 } from "react-icons/ci";
+import { FaBriefcase } from "react-icons/fa";
+import { SiLeetcode } from "react-icons/si";
 
 export interface ProjectFeature {
   title: string;
@@ -110,27 +113,17 @@ export default function WorkSection({ projects = [], workPoints = DEFAULT_WORK_P
           {workPoints.map(({ text }, idx) => {
             const icons = [
               // Audio Soundwave — Vaani AI Voice SaaS
-              <svg key="0" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-emerald-600">
-                <path d="M2 10v4M6 6v12M10 3v18M14 8v8M18 5v14M22 10v4" />
-              </svg>,
+              <CiWavePulse1 key="0" aria-hidden className="h-5 w-5 text-emerald-600" />,
               // CPU Logic Chip — LeetCode & DSA Problem Solving
-              <svg key="1" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-indigo-600">
-                <rect width="16" height="16" x="4" y="4" rx="2" />
-                <path d="M9 9h6v6H9z" />
-                <path d="M15 2v2M9 2v2M15 20v2M9 20v2M2 15h2M2 9h2M20 15h2M20 9h2" />
-              </svg>,
+              <SiLeetcode key="1" aria-hidden className="h-5 w-5 text-indigo-600" />,
               // User Check / Developer Profile — Software Developer Roles
-              <svg key="2" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-amber-600">
-                <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
-                <circle cx="9" cy="7" r="4" />
-                <polyline points="16 11 18 13 22 9" />
-              </svg>,
+              <FaBriefcase key="2" aria-hidden className="h-5 w-5 text-amber-600" />,
             ];
 
             const badgeStyles = [
-              "border-emerald-200/80 bg-emerald-50/70 shadow-2xs",
-              "border-indigo-200/80 bg-indigo-50/70 shadow-2xs",
-              "border-amber-200/80 bg-amber-50/70 shadow-2xs",
+              "border-emerald-300/25 bg-emerald-400/10 shadow-[0_8px_20px_-10px_rgba(52,211,153,0.7)]",
+              "border-indigo-300/25 bg-indigo-400/10 shadow-[0_8px_20px_-10px_rgba(129,140,248,0.7)]",
+              "border-amber-300/25 bg-amber-400/10 shadow-[0_8px_20px_-10px_rgba(251,191,36,0.7)]",
             ][idx % 3];
 
             return (
@@ -177,23 +170,6 @@ export default function WorkSection({ projects = [], workPoints = DEFAULT_WORK_P
                 {/* Left Column (5 Cols on LG): Editorial Content */}
                 <div className="flex flex-col justify-between lg:col-span-5 z-10">
                   <div>
-                    {/* Eyebrow Meta Row */}
-                    <div className="flex flex-wrap items-center gap-2.5">
-                      <span className="font-mono text-xs font-semibold uppercase tracking-[0.2em] text-zinc-500">
-                        {project.tag ?? `0${pIdx + 1} / FEATURED`}
-                      </span>
-                      <span className="h-3 w-px bg-zinc-300" />
-                      <span className="rounded-md border border-zinc-200/70 bg-zinc-50 px-2 py-0.5 font-mono text-[11px] font-medium text-zinc-600">
-                        {project.role ?? "Full-Stack Project"}
-                      </span>
-                      {project.live && (
-                        <span className="inline-flex items-center gap-1.5 rounded-full border border-emerald-200 bg-emerald-50/80 px-2.5 py-0.5 font-mono text-[10px] font-medium text-emerald-700">
-                          <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse" />
-                          Live
-                        </span>
-                      )}
-                    </div>
-
                     {/* Project Title */}
                     <h3 className="mt-3.5 font-sora text-2xl font-bold tracking-tight text-[#222222] sm:text-3xl">
                       {project.name}

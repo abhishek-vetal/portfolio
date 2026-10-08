@@ -222,7 +222,7 @@ export default function ContactSection() {
               </div>
             )}
 
-            <form onSubmit={handleSubmit} className="mt-6 flex flex-col gap-6">
+            <form onSubmit={handleSubmit} autoComplete="off" className="mt-6 flex flex-col gap-6">
               {/* Name & Email in 1 line */}
               <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
                 <div>
@@ -236,11 +236,12 @@ export default function ContactSection() {
                     type="text"
                     id="name"
                     name="name"
+                    autoComplete="off"
                     required
                     placeholder="John Doe"
                     value={formData.name}
                     onChange={handleChange}
-                    className="mt-1 w-full border-b border-zinc-300 bg-transparent py-2.5 text-sm text-zinc-900 placeholder:text-zinc-400 placeholder:font-normal focus:border-zinc-900 focus:outline-none transition-colors"
+                    className="mt-1 w-full border-b border-zinc-300 bg-transparent py-2.5 text-sm text-zinc-900 placeholder:text-zinc-400 placeholder:font-normal focus:outline-none transition-colors"
                   />
                 </div>
 
@@ -255,11 +256,12 @@ export default function ContactSection() {
                     type="email"
                     id="email"
                     name="email"
+                    autoComplete="off"
                     required
                     placeholder="john@example.com"
                     value={formData.email}
                     onChange={handleChange}
-                    className="mt-1 w-full border-b border-zinc-300 bg-transparent py-2.5 text-sm text-zinc-900 placeholder:text-zinc-400 placeholder:font-normal focus:border-zinc-900 focus:outline-none transition-colors"
+                    className="mt-1 w-full border-b border-zinc-300 bg-transparent py-2.5 text-sm text-zinc-900 placeholder:text-zinc-400 placeholder:font-normal focus:outline-none transition-colors"
                   />
                 </div>
               </div>
@@ -275,10 +277,11 @@ export default function ContactSection() {
                   type="text"
                   id="subject"
                   name="subject"
+                    autoComplete="off"
                   placeholder="What's this regarding?"
                   value={formData.subject}
                   onChange={handleChange}
-                  className="mt-1 w-full border-b border-zinc-300 bg-transparent py-2.5 text-sm text-zinc-900 placeholder:text-zinc-400 placeholder:font-normal focus:border-zinc-900 focus:outline-none transition-colors"
+                  className="mt-1 w-full border-b border-zinc-300 bg-transparent py-2.5 text-sm text-zinc-900 placeholder:text-zinc-400 placeholder:font-normal focus:outline-none transition-colors"
                 />
               </div>
 
@@ -292,13 +295,14 @@ export default function ContactSection() {
                 <textarea
                   id="message"
                   name="message"
+                    autoComplete="off"
                   required
                   rows={3}
                   placeholder="Write your message here..."
                   value={formData.message}
                   onChange={handleChange}
                   onKeyDown={handleKeyDown}
-                  className="mt-1 w-full border-b border-zinc-300 bg-transparent py-2.5 text-sm text-zinc-900 placeholder:text-zinc-400 placeholder:font-normal focus:border-zinc-900 focus:outline-none transition-colors resize-none"
+                  className="mt-1 w-full border-b border-zinc-300 bg-transparent py-2.5 text-sm text-zinc-900 placeholder:text-zinc-400 placeholder:font-normal focus:outline-none transition-colors resize-none"
                 />
               </div>
 

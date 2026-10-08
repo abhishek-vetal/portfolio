@@ -7,8 +7,8 @@
   --font-sora: var(--font-sora), 'Sora', sans-serif;
   --font-inter: var(--font-inter), 'Inter', sans-serif;
 
-  --color-background: #ffffff;
-  --color-foreground: #0f172a;
+  --color-background: #09090b;
+  --color-foreground: #f4f4f5;
 
   /* Brand accent — professional blue */
   --color-brand-50: #eff6ff;
@@ -24,12 +24,38 @@
 }
 
 html, body {
-  background-color: #ffffff !important;
-  color: #0f172a;
-  color-scheme: light;
+  background-color: #09090b !important;
+  color: #f4f4f5;
+  color-scheme: dark;
   font-family: var(--font-manrope), 'Manrope', ui-sans-serif, system-ui, sans-serif;
 }
 
+/* Premium global atmosphere and interaction polish */
+body {
+  background-image:
+    radial-gradient(circle at 6% 0%, rgba(124, 58, 237, 0.08), transparent 28rem),
+    radial-gradient(circle at 94% 22%, rgba(34, 211, 238, 0.06), transparent 26rem);
+  background-attachment: fixed;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+:focus-visible {
+  outline: 2px solid rgba(167, 139, 250, 0.9);
+  outline-offset: 4px;
+}
+
+/* Keep form fields from showing a full focus box while typing. */
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: none !important;
+  outline-offset: 0;
+  box-shadow: none !important;
+}
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-sora), 'Sora', sans-serif;
 }
@@ -54,22 +80,165 @@ h1, h2, h3, h4, h5, h6 {
   width: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: #ffffff;
+  background: #09090b;
 }
 ::-webkit-scrollbar-thumb {
-  background: #d4d4d8;
+  background: #3f3f46;
   border-radius: 9999px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #a1a1aa;
+  background: #52525b;
 }
 
 /* Selection — soft brand tint */
 ::selection {
-  background: rgba(37, 99, 235, 0.15);
-  color: #0f172a;
+  background: rgba(96, 165, 250, 0.28);
+  color: #ffffff;
 }
 
+/* Dark theme surface and type overrides for the existing utility classes. */
+[class~="bg-white"] {
+  background-color: #18181b !important;
+}
+
+[class~="bg-white/85"] {
+  background-color: rgba(9, 9, 11, 0.85) !important;
+}
+
+[class~="bg-white/95"] {
+  background-color: rgba(9, 9, 11, 0.95) !important;
+}
+
+[class~="bg-white/80"]:hover {
+  background-color: rgba(39, 39, 42, 0.8) !important;
+}
+
+[class~="bg-zinc-50"],
+[class~="bg-zinc-50/90"],
+[class~="bg-zinc-50/80"] {
+  background-color: rgba(24, 24, 27, 0.9) !important;
+}
+
+[class~="bg-zinc-100"] {
+  background-color: #27272a !important;
+}
+
+[class~="bg-zinc-200/60"] {
+  background-color: rgba(63, 63, 70, 0.6) !important;
+}
+
+[class~="bg-zinc-900"] {
+  background-color: #f4f4f5 !important;
+}
+
+[class~="bg-zinc-900"][class~="text-white"] {
+  color: #09090b !important;
+}
+
+[class~="hover:bg-zinc-50"]:hover {
+  background-color: #27272a !important;
+}
+
+[class~="hover:bg-zinc-800"]:hover {
+  background-color: #e4e4e7 !important;
+}
+
+[class~="border-zinc-200"],
+[class~="border-zinc-200/50"],
+[class~="border-zinc-200/60"],
+[class~="border-zinc-200/70"],
+[class~="border-zinc-200/80"],
+[class~="border-zinc-200/90"] {
+  border-color: rgba(63, 63, 70, 0.8) !important;
+}
+
+[class~="border-zinc-300"],
+[class~="border-zinc-300/80"] {
+  border-color: #52525b !important;
+}
+
+[class~="hover:border-zinc-300"]:hover,
+[class~="hover:border-zinc-400"]:hover {
+  border-color: #71717a !important;
+}
+
+[class~="text-[#222222]"],
+[class~="text-[#18181b]"],
+[class~="text-zinc-900"] {
+  color: #f4f4f5 !important;
+}
+
+[class~="text-zinc-800"] {
+  color: #e4e4e7 !important;
+}
+
+[class~="text-zinc-700"] {
+  color: #d4d4d8 !important;
+}
+
+[class~="text-zinc-600"] {
+  color: #a1a1aa !important;
+}
+
+[class~="text-zinc-500"] {
+  color: #71717a !important;
+}
+
+[class~="text-zinc-300"] {
+  color: #d4d4d8 !important;
+}
+
+[class~="text-zinc-400"] {
+  color: #a1a1aa !important;
+}
+
+[class~="hover:text-zinc-900"]:hover {
+  color: #f4f4f5 !important;
+}
+
+[class~="hover:text-zinc-800"]:hover {
+  color: #e4e4e7 !important;
+}
+
+[class~="hover:text-zinc-700"]:hover,
+[class~="group-hover:text-zinc-700"]:hover {
+  color: #d4d4d8 !important;
+}
+
+[class~="placeholder:text-zinc-400"]::placeholder {
+  color: #71717a !important;
+}
+
+[class~="focus:border-zinc-900"]:focus {
+  border-color: #f4f4f5 !important;
+}
+
+[class~="from-zinc-100/70"] {
+  --tw-gradient-from: rgba(255, 255, 255, 0.06) !important;
+}
+/* Section entrance motion: visible by default, animated once when entering view */
+@keyframes sectionRiseIn {
+  from {
+    opacity: 0.72;
+    filter: blur(3px);
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateY(0);
+  }
+}
+
+.scroll-reveal.is-visible {
+  animation: sectionRiseIn 800ms cubic-bezier(0.16, 1, 0.3, 1) var(--reveal-delay, 0ms) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scroll-reveal.is-visible {
+    animation: none;
+  }
+}
 /* Hero Keyframe Animations */
 @keyframes heroFadeUp {
   from {
@@ -141,7 +310,6 @@ h1, h2, h3, h4, h5, h6 {
     transform: rotate(0deg);
   }
 }
-
 /* Secondary Card Flex at the Clip */
 @keyframes cardClipFlex {
   0% {
@@ -164,7 +332,12 @@ h1, h2, h3, h4, h5, h6 {
     transform: rotate(0deg);
   }
 }
-
+@media (prefers-reduced-motion: reduce) {
+  .animate-lanyard-swing,
+  .animate-card-flex {
+    animation: none;
+  }
+}
 .animate-lanyard-swing {
   animation: lanyardSway 2.4s both;
   will-change: transform;

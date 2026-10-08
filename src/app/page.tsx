@@ -6,6 +6,7 @@ import EducationSection from "@/components/education-section";
 import ContactSection from "@/components/contact-section";
 import DevIdCard from "@/components/dev-id-card";
 import { Footer } from "@/components/footer";
+import ScrollReveal from "@/components/scroll-reveal";
 
 const FEATURED_PROJECTS = [
   {
@@ -128,14 +129,20 @@ export default function Home() {
       {/* Hero */}
       <section
         id="home"
-        className="relative mx-auto flex min-h-[calc(100vh-4rem)] w-full max-w-7xl flex-col justify-center px-4 py-12 sm:px-6 sm:py-16 lg:py-20"
+        className="relative isolate flex min-h-[calc(100vh-4rem)] w-full flex-col justify-center overflow-hidden px-4 py-12 sm:px-6 sm:py-16 lg:py-20"
       >
-        <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-12 lg:gap-8 xl:gap-12">
+        {/* Ambient hero field */}
+        <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
+          <div className="absolute -left-32 top-16 h-80 w-80 rounded-full bg-violet-500/10 blur-3xl" />
+          <div className="absolute -right-40 bottom-0 h-[28rem] w-[28rem] rounded-full bg-cyan-400/10 blur-3xl" />
+          <div className="absolute inset-0 opacity-[0.14] [background-image:linear-gradient(rgba(255,255,255,0.08)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.08)_1px,transparent_1px)] [background-size:48px_48px] [mask-image:linear-gradient(to_bottom,black,transparent_88%)]" />
+        </div>
+        <div className="relative z-10 mx-auto grid w-full max-w-7xl grid-cols-1 items-center gap-12 lg:grid-cols-12 lg:gap-8 xl:gap-12">
           {/* Left Column: Headline, Bio & CTAs */}
           <div className="flex flex-col items-center text-center lg:items-start lg:text-left lg:col-span-7">
             {/* Fluid display headline — strictly one line on desktop */}
-            <h1 className="hero-animate-1 font-sora text-[clamp(2.5rem,7vw,3.5rem)] sm:text-5xl lg:text-[clamp(2.85rem,4.2vw,4.5rem)] xl:text-[clamp(3.25rem,4.6vw,4.85rem)] font-extrabold leading-[1.08] tracking-[-0.04em] text-[#222222] lg:whitespace-nowrap">
-              Hey,{"\u00A0"}I&apos;m{" "}Abhishek
+            <h1 className="hero-animate-1 font-sora text-[clamp(2.5rem,7vw,3.5rem)] sm:text-5xl lg:text-[clamp(2.85rem,4.2vw,4.5rem)] xl:text-[clamp(3.25rem,4.6vw,4.85rem)] font-extrabold leading-[1.08] tracking-[-0.04em] text-white lg:whitespace-nowrap">
+              Hey,{"\u00A0"}I&apos;m{" "}<span className="bg-gradient-to-r from-white via-violet-200 to-cyan-200 bg-clip-text text-transparent">Abhishek</span>
             </h1>
 
             {/* Animated decorative accent line */}
@@ -145,12 +152,12 @@ export default function Home() {
             />
 
             {/* Role title */}
-            <p className="hero-animate-3 mt-6 text-xl font-semibold tracking-tight text-zinc-800 sm:mt-7 sm:text-2xl">
+            <p className="hero-animate-3 mt-6 text-xl font-semibold tracking-tight text-zinc-200 sm:mt-7 sm:text-2xl">
               Software Developer
             </p>
 
             {/* Tagline bio */}
-            <p className="hero-animate-4 mt-4 max-w-xl text-balance text-base font-light leading-relaxed text-zinc-600 sm:text-lg">
+            <p className="hero-animate-4 mt-4 max-w-xl text-balance text-base font-light leading-relaxed text-zinc-400 sm:text-lg">
               I build full-stack products — from first commit to production. Looking to do the same with a great team.
             </p>
 
@@ -163,7 +170,7 @@ export default function Home() {
                   document.getElementById("work")?.scrollIntoView({ behavior: "smooth" });
                   window.history.pushState(null, "", "/work");
                 }}
-                className="inline-flex items-center gap-2 rounded-xl bg-zinc-900 px-6 py-3 font-inter text-sm font-semibold text-white shadow-xs transition-all duration-200 hover:bg-zinc-800 hover:-translate-y-0.5 active:translate-y-0"
+                className="inline-flex items-center gap-2 rounded-xl bg-[#f4f4f5] px-6 py-3 font-inter text-sm font-semibold text-[#09090b] shadow-[0_12px_30px_-12px_rgba(255,255,255,0.55)] transition-all duration-200 hover:-translate-y-0.5 hover:bg-[#e4e4e7] active:translate-y-0"
               >
                 <span>Explore Work</span>
                 <span className="text-xs opacity-80">↓</span>
@@ -176,7 +183,7 @@ export default function Home() {
                   document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
                   window.history.pushState(null, "", "/contact");
                 }}
-                className="inline-flex items-center gap-2 rounded-xl border border-zinc-300/80 bg-white px-6 py-3 font-inter text-sm font-semibold text-zinc-900 shadow-2xs transition-all duration-200 hover:border-zinc-400 hover:bg-zinc-50 hover:-translate-y-0.5 active:translate-y-0"
+                className="inline-flex items-center gap-2 rounded-xl border border-white/15 bg-white/[0.04] px-6 py-3 font-inter text-sm font-semibold text-zinc-100 shadow-xs transition-all duration-200 hover:-translate-y-0.5 hover:border-white/30 hover:bg-white/[0.08] active:translate-y-0"
               >
                 <span>Get in Touch</span>
                 <span className="text-xs text-zinc-400">→</span>
@@ -198,10 +205,14 @@ export default function Home() {
       <TechGrid />
 
       {/* Education Section */}
-      <EducationSection />
+      <ScrollReveal>
+        <EducationSection />
+      </ScrollReveal>
 
       {/* Contact Section */}
-      <ContactSection />
+      <ScrollReveal delay={80}>
+        <ContactSection />
+      </ScrollReveal>
 
       {/* Footer */}
       <Footer />

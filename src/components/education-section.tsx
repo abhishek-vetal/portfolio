@@ -91,12 +91,16 @@ export default function EducationSection() {
           >
             <div className="flex flex-col items-center">
               {/* Scrimba Official Logo Badge */}
-              <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-white border border-zinc-200/80 shadow-2xs transition-transform duration-300 group-hover:scale-105">
-                <svg width="32" height="32" viewBox="0 0 36 36" fill="#2B2544" aria-label="Scrimba Logo">
-                  <rect x="13" y="9" width="17" height="5.5" rx="2.75" />
-                  <rect x="13" y="16.5" width="11" height="5.5" rx="2.75" />
-                  <rect x="8.5" y="24" width="15.5" height="5.5" rx="2.75" />
-                  <circle cx="4" cy="26.75" r="2.75" />
+              <div
+                aria-label="Scrimba logo"
+                className="relative flex h-20 w-20 items-center justify-center overflow-hidden rounded-[1.65rem] border border-violet-300/30 bg-gradient-to-br from-[#241b3f] via-[#4c3f91] to-[#a855f7] shadow-[0_14px_30px_-12px_rgba(124,58,237,0.75)] transition-all duration-300 group-hover:scale-105 group-hover:shadow-[0_18px_36px_-10px_rgba(168,85,247,0.6)]"
+              >
+                <span aria-hidden className="absolute inset-1 rounded-[1.35rem] border border-white/20 bg-[#171329]/35" />
+                <svg width="48" height="48" viewBox="0 0 36 36" fill="none" aria-hidden className="relative drop-shadow-[0_3px_4px_rgba(0,0,0,0.3)]">
+                  <rect x="13" y="9" width="17" height="5.5" rx="2.75" fill="white" />
+                  <rect x="13" y="16.5" width="11" height="5.5" rx="2.75" fill="white" />
+                  <rect x="8.5" y="24" width="15.5" height="5.5" rx="2.75" fill="white" />
+                  <circle cx="4" cy="26.75" r="2.75" fill="#f0abfc" />
                 </svg>
               </div>
 
@@ -130,15 +134,21 @@ export default function EducationSection() {
             className="group relative flex flex-col items-center justify-between text-center rounded-3xl border border-zinc-200/80 bg-white p-8 sm:p-10 shadow-[0_4px_24px_-6px_rgba(15,23,42,0.05)] transition-all duration-300 transform-gpu hover:-translate-y-1 hover:border-zinc-300 hover:shadow-[0_16px_40px_-10px_rgba(15,23,42,0.08)]"
           >
             <div className="flex flex-col items-center">
-              {/* Harvard Veritas Official Logo Badge */}
-              <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-white border border-zinc-200/80 shadow-2xs transition-transform duration-300 group-hover:scale-105 p-2">
-                <Image
-                  src="/harvard-logo.png"
-                  alt="Harvard University Veritas Shield"
-                  width={44}
-                  height={44}
-                  className="h-full w-auto object-contain"
-                />
+              {/* CS50 course logo badge */}
+              <div
+                aria-label="Harvard University crest, used for CS50"
+                className="relative flex h-20 w-20 items-center justify-center overflow-hidden rounded-[1.65rem] border border-red-300/30 bg-gradient-to-br from-[#3b0a12] via-[#8f1722] to-[#d33b4b] p-2.5 shadow-[0_14px_30px_-12px_rgba(185,28,28,0.8)] transition-all duration-300 group-hover:scale-105 group-hover:shadow-[0_18px_36px_-10px_rgba(220,38,38,0.62)]"
+              >
+                <span aria-hidden className="absolute inset-1 rounded-[1.35rem] border border-white/20 bg-[#26070d]/25" />
+                <span className="relative flex h-full w-full items-center justify-center rounded-2xl bg-[#f7f3ea] p-1 shadow-inner">
+                  <Image
+                    src="/harvard-logo.png"
+                    alt="Harvard University crest"
+                    width={48}
+                    height={48}
+                    className="h-12 w-12 object-contain drop-shadow-[0_2px_2px_rgba(0,0,0,0.18)]"
+                  />
+                </span>
               </div>
 
               <h3 className="mt-6 font-sora text-xl font-bold tracking-tight text-[#18181b] sm:text-2xl transition-colors duration-200 group-hover:text-zinc-950">

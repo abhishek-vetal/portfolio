@@ -41,7 +41,7 @@ export default function DevIdCard() {
 
         {/* ID Card with responsive proportions for mobile, tablet & desktop */}
         <div
-          className="animate-card-flex group relative -mt-1 w-[275px] min-[380px]:w-[295px] sm:w-[315px] lg:w-[330px] xl:w-[340px] h-[385px] min-[380px]:h-[410px] sm:h-[435px] lg:h-[455px] xl:h-[470px] cursor-default rounded-3xl"
+          className="animate-card-flex group relative -mt-1 w-[255px] min-[380px]:w-[270px] sm:w-[290px] lg:w-[305px] xl:w-[315px] h-[355px] min-[380px]:h-[375px] sm:h-[400px] lg:h-[420px] xl:h-[435px] cursor-default rounded-3xl"
           style={{
             transformOrigin: "50% 0px", // Card flexes at clip
           }}
